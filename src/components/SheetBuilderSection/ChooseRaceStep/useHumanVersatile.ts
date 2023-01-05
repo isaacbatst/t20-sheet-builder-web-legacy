@@ -1,12 +1,13 @@
 import { useState } from "react"
-import { VersatileChoiceSkill, SkillName, VersatileChoice, Attribute, GeneralPowerName, VersatileChoicePower, GeneralPowerFactory, VersatileChoiceType } from "t20-sheet-builder"
+import { GeneralPowerFactory, GeneralPowerName, SkillName, VersatileChoice, VersatileChoicePower, VersatileChoiceSkill, VersatileChoiceType } from "t20-sheet-builder"
+
+export type SetSecondVersatileChoiceParams = { type: 'skill', value: SkillName } | { type: 'power', value: GeneralPowerName }
 
 export const useHumanVersatile = () => {
   const [firstVersatileChoice, setFirstVersatileChoice] = useState<VersatileChoiceSkill>(new VersatileChoiceSkill(SkillName.acrobatics))
   const [secondVersatileChoice, setSecondVersatileChoice] = useState<VersatileChoice>(new VersatileChoiceSkill(SkillName.animalHandling))
-  const secondChoiceTitle = secondVersatileChoice.type === 'power' ? 'um poder' : 'uma perícia'
 
-  const makeSecondVersatileChoice = (params: { type: 'skill', value: SkillName } | { type: 'power', value: GeneralPowerName }) => {
+  const makeSecondVersatileChoice = (params: SetSecondVersatileChoiceParams): void => {
     if(params.type === 'skill'){
       return setSecondVersatileChoice(new VersatileChoiceSkill(params.value))
     }
@@ -24,6 +25,6 @@ export const useHumanVersatile = () => {
   return {
     firstVersatileChoice, setFirstVersatileChoice,
     secondVersatileChoice, setDefaultChoice,
-    secondChoiceTitle, setSecondVersatileChoice: makeSecondVersatileChoice
+    setSecondVersatileChoice: makeSecondVersatileChoice
   }
 }

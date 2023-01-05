@@ -24,7 +24,6 @@ const ChooseRaceStep: React.FC = () => {
         <option value="dwarf">Anão</option>
       </select>
       <RaceStepComponent chooseRace={(race: RaceInterface) => context.setRace(race)} />
-    <button>Selecionar</button>
   </div>
   )
 }
