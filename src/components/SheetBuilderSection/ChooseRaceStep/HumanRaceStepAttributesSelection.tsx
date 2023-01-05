@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
+import Checkbox from '../../Checkbox/Checkbox';
 import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext';
 import { HumanRaceStepAttributesSelector } from './HumanRaceStepAttributesSelector';
 
@@ -18,14 +19,11 @@ const HumanRaceStepAttributesSelection: React.FC<Props> = ({handleChange, select
       {Object.entries(selector.attributes).map(([key, value]) => {
         const attribute = key as Attribute;
         return (
-          <label key={key} className="px-3 flex items-center">
-            <input 
-              type="checkbox"
-              className='w-4 h-4 mr-2' 
-              onChange={() => handleChange(attribute)}
-              checked={value} 
-            /> {Translator.getAttributeTranslation(attribute)} ({selector.getPreview(attribute, context.attributesLauncher.attributes)})
-          </label>
+          <Checkbox 
+            key={key} handleChange={() => handleChange(attribute)}               
+            checked={value} 
+          > {Translator.getAttributeTranslation(attribute)} ({selector.getPreview(attribute, context.attributesLauncher.attributes)})
+          </Checkbox>
         )
       })}
     </div> 

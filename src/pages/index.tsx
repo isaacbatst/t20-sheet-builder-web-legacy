@@ -1,5 +1,8 @@
+import { enableMapSet } from 'immer'
 import Head from 'next/head'
 import SheetBuilderSection from '../components/SheetBuilderSection/SheetBuilderSection'
+
+enableMapSet()
 
 export default function Home() {
   return (
