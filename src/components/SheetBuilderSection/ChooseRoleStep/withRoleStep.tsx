@@ -30,13 +30,15 @@ const withRoleWrapper = (RoleComponent:  React.FC<RoleStepWrappedProps>) => {
 
     return (
       <div className='mb-4'>
-        {roleSkillSelectors.selectors.map((selector, index) => 
-          <RoleSkillSelection 
-            key={index} 
-            selector={selector} 
-            handleChange={(skill: SkillName) => setRoleSkillGroupSelector(draft => draft.selectors[index].toggle(skill))} 
-          />)}
+        <div className="mb-3">
+          {roleSkillSelectors.selectors.map((selector, index) => 
+            <RoleSkillSelection 
+              key={index} 
+              selector={selector} 
+              handleChange={(skill: SkillName) => setRoleSkillGroupSelector(draft => draft.selectors[index].toggle(skill))} 
+            />)}
           {<RoleComponent chosenSkills={chosenSkills} setFactory={setRoleFactory} />}
+        </div>
         <Button
           onClick={() => {
             if(!roleFactory) throw new Error('UNDEFINED_ROLE_BUILDER')

@@ -7,7 +7,7 @@ const BuyingSystemSection: React.FC = () => {
   const { attributesLauncher, setAttributesLauncher } = useContext(SheetBuilderSectionContext)
 
   return (
-    <div className='mb-5'>
+    <div>
       <h3 className='mb-3'>Compra de pontos</h3>
       <div>Restante: {attributesLauncher.getPoints()}</div>
       <div className="flex justify-evenly mb-3">

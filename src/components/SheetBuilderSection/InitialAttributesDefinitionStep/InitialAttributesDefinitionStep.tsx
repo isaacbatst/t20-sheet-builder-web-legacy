@@ -8,8 +8,8 @@ const InitialAttributesDefinitionStep: React.FC = () => {
   const context = useContext(SheetBuilderSectionContext)
 
   return (
-    <div>
-      <h2>1 - Atributos Iniciais</h2>
+    <div className='mb-6'>
+      <h2 className='mb-3'>1 - Atributos Iniciais</h2>
       <BuyingSystem />
     </div>
   )

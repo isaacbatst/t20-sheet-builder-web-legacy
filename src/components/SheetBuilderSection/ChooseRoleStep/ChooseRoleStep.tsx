@@ -16,7 +16,7 @@ const ChooseRoleStep: React.FC = () => {
   }, [selected])
 
   return (
-    <div>
+    <div className='mb-6'>
       <div className="flex justify-center mb-3">
         <h2>3 - Escolha sua classe</h2>
         <select name="role" id="role" value={selected} onChange={(e) => setSelected(e.target.value as RoleName)}>
