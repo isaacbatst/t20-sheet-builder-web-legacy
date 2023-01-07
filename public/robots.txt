@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://t20ficha.vercel.app
+
+# Sitemaps
+Sitemap: https://t20ficha.vercel.app/sitemap.xml
