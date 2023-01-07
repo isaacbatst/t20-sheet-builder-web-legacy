@@ -11,7 +11,7 @@ const DwarfRaceStep: React.FC<Props> = ({ chooseRace }) => {
     <div>
       <Button onClick={() => {
           chooseRace(new Dwarf())
-      }}>Escolher Raça</Button>
+      }}>Confirmar Raça</Button>
     </div>
   )
 }

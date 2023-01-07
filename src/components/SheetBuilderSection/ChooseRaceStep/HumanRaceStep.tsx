@@ -25,7 +25,7 @@ const HumanRaceStep: RaceStepComponent = ({ chooseRace: setRace }) => {
           human.addVersatilChoice(humanVersatile.secondVersatileChoice)
           setRace(human)
         }}>
-          Escolher raça
+          Confirmar Raça
         </Button>
       </div>   
     </div>

@@ -14,7 +14,7 @@ const HumanRaceStepAttributesSelection: React.FC<Props> = ({handleChange, select
   
   return (
     <div>
-    <div className='mb-4'>Escolha 3 atributos para receber +1:</div>
+    <h3 className='mb-2'>Escolha 3 atributos para receber +1:</h3>
     <div className='flex mb-3'>
       {Object.entries(selector.attributes).map(([key, value]) => {
         const attribute = key as Attribute;

@@ -17,12 +17,14 @@ const ChooseRaceStep: React.FC = () => {
   
   const RaceStepComponent = raceStepComponents[selected]
   return (
-    <div className='flex flex-col items-center'>
-      <h2>2 - Escolha sua raça</h2>
-      <select name="race" id="race" value={selected} onChange={(e) => setSelected(e.target.value as RaceName)}>
-        <option value="human">Humano</option>
-        <option value="dwarf">Anão</option>
-      </select>
+    <div className='flex flex-col items-center mb-6'>
+      <div className="flex justify-center items-center mb-3">
+        <h2 className='mr-1'>2 - Escolha sua raça</h2>
+        <select className='p-1' name="race" id="race" value={selected} onChange={(e) => setSelected(e.target.value as RaceName)}>
+          <option value="human">Humano</option>
+          <option value="dwarf">Anão</option>
+        </select>
+      </div>
       <RaceStepComponent chooseRace={(race: RaceInterface) => context.setRace(race)} />
   </div>
   )

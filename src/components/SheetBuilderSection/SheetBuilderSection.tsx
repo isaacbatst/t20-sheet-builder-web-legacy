@@ -7,7 +7,7 @@ import { SheetBuilderSectionContextProvider } from './SheetBuilderSectionContext
 const SheetBuilderSection: React.FC = () => {
   return (
     <SheetBuilderSectionContextProvider>
-      <div>
+      <div className='container mx-auto'>
         <h1>Sheet Builder</h1>
         <InitialAttributesDefinitionStep />
         <ChooseRaceStep />
