@@ -1,6 +1,6 @@
 import { Attribute, GeneralPowerName, Human, SkillName, Translator, VersatileChoiceSkill, VersatileChoiceType } from 't20-sheet-builder'
 import { useImmer } from 'use-immer'
-import Button from '../../Button/Button'
+import Button from '../../common/Button/Button'
 import { RaceStepComponent } from './ChooseRaceStep'
 import HumanRaceStepAttributesSelection from './HumanRaceStepAttributesSelection'
 import { HumanRaceStepAttributesSelectorImmerable } from './HumanRaceStepAttributesSelectorImmerable'

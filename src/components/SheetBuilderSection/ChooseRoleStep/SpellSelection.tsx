@@ -1,7 +1,7 @@
 import React from 'react'
 import { SpellStatic, Translator } from 't20-sheet-builder'
 import { CheckboxSelector } from '../../../domain/entities/CheckboxSelector'
-import Checkbox from '../../Checkbox/Checkbox'
+import Checkbox from '../../common/Checkbox/Checkbox'
 
 type Props = {
   selector: CheckboxSelector<SpellStatic>

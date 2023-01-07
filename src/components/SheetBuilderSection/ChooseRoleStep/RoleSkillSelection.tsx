@@ -1,6 +1,6 @@
 import React from 'react'
 import { SkillName, Translator } from 't20-sheet-builder'
-import Checkbox from '../../Checkbox/Checkbox'
+import Checkbox from '../../common/Checkbox/Checkbox'
 import { SkillCheckboxSelector } from './RoleSkillSelector'
 
 type Props = {

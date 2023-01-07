@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Dwarf } from 't20-sheet-builder'
-import Button from '../../Button/Button'
+import Button from '../../common/Button/Button'
 
 type Props = {
   chooseRace(dwarf: Dwarf): void

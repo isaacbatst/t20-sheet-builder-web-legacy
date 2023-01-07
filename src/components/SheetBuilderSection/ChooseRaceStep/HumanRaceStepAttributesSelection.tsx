@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
-import Checkbox from '../../Checkbox/Checkbox';
+import Checkbox from '../../common/Checkbox/Checkbox';
 import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext';
 import { HumanRaceStepAttributesSelector } from './HumanRaceStepAttributesSelector';
 
