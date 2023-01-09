@@ -40,6 +40,7 @@ const withRoleWrapper = (RoleComponent:  React.FC<RoleStepWrappedProps>) => {
           {<RoleComponent chosenSkills={chosenSkills} setFactory={setRoleFactory} />}
         </div>
         <Button
+          disabled={!roleFactory}
           onClick={() => {
             if(!roleFactory) throw new Error('UNDEFINED_ROLE_BUILDER')
 

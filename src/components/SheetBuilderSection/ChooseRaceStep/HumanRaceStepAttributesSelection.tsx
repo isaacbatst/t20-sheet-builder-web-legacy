@@ -2,27 +2,27 @@ import React, { useContext } from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
 import Checkbox from '../../common/Checkbox/Checkbox';
 import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext';
-import { HumanRaceStepAttributesSelector } from './HumanRaceStepAttributesSelector';
+import { HumanRaceStepAttributesSelectorInterface } from './HumanRaceStepAttributesSelector';
 
 type Props = {
-  handleChange(attribute: Attribute): void
-  selector: HumanRaceStepAttributesSelector
+  selector: HumanRaceStepAttributesSelectorInterface
 }
 
-const HumanRaceStepAttributesSelection: React.FC<Props> = ({handleChange, selector}) => {
+const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
   const context= useContext(SheetBuilderSectionContext)
   
   return (
     <div>
     <h3 className='mb-2'>Escolha 3 atributos para receber +1:</h3>
     <div className='flex mb-3'>
-      {Object.entries(selector.attributes).map(([key, value]) => {
+      {Object.entries(selector.getDTO().attributes).map(([key, value]) => {
         const attribute = key as Attribute;
         return (
           <Checkbox 
-            key={key} handleChange={() => handleChange(attribute)}               
+            key={key} handleChange={() => selector.toggleAttribute(attribute)}               
             checked={value} 
-          > {Translator.getAttributeTranslation(attribute)} ({selector.getPreview(attribute, context.attributesLauncher.attributes)})
+          > 
+            {Translator.getAttributeTranslation(attribute)} ({selector.getDTO().attributes[attribute] ? context.attributesLauncher.attributes[attribute] + 1 : context.attributesLauncher.attributes[attribute]})
           </Checkbox>
         )
       })}
