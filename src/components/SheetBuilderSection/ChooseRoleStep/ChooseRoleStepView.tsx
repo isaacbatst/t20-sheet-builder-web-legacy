@@ -9,7 +9,7 @@ const rolesComponents: Record<RoleName, { Component: React.FC<RoleStepWrapperPro
   warrior: {roleClass: Warrior, Component: RoleStepWarrior},
 }
 
-const ChooseRoleStep: React.FC = () => {
+const ChooseRoleStepView: React.FC = () => {
   const [selected, setSelected] = useState<RoleName>(RoleName.warrior)
   const role = useMemo(() => {
     return rolesComponents[selected]
@@ -31,4 +31,4 @@ const ChooseRoleStep: React.FC = () => {
   )
 }
 
-export default ChooseRoleStep
+export default ChooseRoleStepView

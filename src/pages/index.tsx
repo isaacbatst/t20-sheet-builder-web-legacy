@@ -1,6 +1,7 @@
 import { enableMapSet } from 'immer'
 import Head from 'next/head'
 import SheetBuilderSection from '../components/SheetBuilderSection/SheetBuilderSection'
+import { SheetBuilderSectionContextProvider } from '../components/SheetBuilderSection/SheetBuilderSectionContext'
 
 enableMapSet()
 
@@ -15,7 +16,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='text-center'>
-        <SheetBuilderSection />
+        <SheetBuilderSectionContextProvider>
+            <SheetBuilderSection />
+        </SheetBuilderSectionContextProvider>
       </main>
     </>
   )

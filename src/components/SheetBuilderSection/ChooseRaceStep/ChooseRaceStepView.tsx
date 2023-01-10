@@ -31,6 +31,7 @@ const ChooseRaceStepView: React.FC = () => {
       <Button onClick={() => {
         if(selectedRace) {
           context.setRace(selectedRace.build())
+          context.sheetBuilderSteps.next()
         }
       }}>
         Confirmar Raça

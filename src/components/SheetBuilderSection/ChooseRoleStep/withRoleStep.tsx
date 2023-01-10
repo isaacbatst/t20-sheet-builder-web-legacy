@@ -45,6 +45,7 @@ const withRoleWrapper = (RoleComponent:  React.FC<RoleStepWrappedProps>) => {
             if(!roleFactory) throw new Error('UNDEFINED_ROLE_BUILDER')
 
             context.setRole(roleFactory.make())
+            context.sheetBuilderSteps.next()
           }}
         >
           Confirmar Classe
