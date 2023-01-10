@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Select from 'react-select';
 import { RaceName, Translator } from 't20-sheet-builder';
 import { Option } from '../../../domain/entities/Option';
+import Alert from '../../common/Alert';
 import Button from '../../common/Button/Button';
 import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext';
 import { RaceStepComponentHuman } from './RaceStepComponentHuman';
@@ -28,12 +29,7 @@ const ChooseRaceStepView: React.FC = () => {
         />
       </div>
       {selectedRace && raceComponent.render(chooseRaceStep)}
-      <Button onClick={() => {
-        if(selectedRace) {
-          context.setRace(selectedRace.build())
-          context.sheetBuilderSteps.next()
-        }
-      }}>
+      <Button disabled={!selectedRace} onClick={() => context.confirmRace(selectedRace)}>
         Confirmar Raça
       </Button>
   </div>

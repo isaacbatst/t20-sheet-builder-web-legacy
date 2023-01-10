@@ -15,8 +15,6 @@ export type ChooseRaceStepDTO = {
 export class ChooseRaceStep implements ChooseRaceStepInterface {
   private raceStep?: RaceStepInterface
 
-  constructor(){}
-
   getDTO(): ChooseRaceStepDTO {
     return {
       race: this.raceStep?.raceName
