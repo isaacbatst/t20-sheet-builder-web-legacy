@@ -9,7 +9,7 @@ import { useChooseRaceStepProjection } from "./ChooseRaceStep/useChooseRaceStepP
 import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
 import { useSheetBuilderStepsProjection } from "./useSheetBuilderStepsProjection";
 
-type SheetBuilderSectionContextType = {
+type SheetBuilderFormContextType = {
   attributesLauncher: AttributesLauncherPerPurchase
   race?: RaceInterface,
   role?: RoleInterface,
@@ -23,9 +23,9 @@ type SheetBuilderSectionContextType = {
   confirmRace: (selectedRace: RaceStepInterface | undefined) => void
 }
 
-export const SheetBuilderSectionContext = createContext<SheetBuilderSectionContextType>(null as unknown as SheetBuilderSectionContextType)
+export const SheetBuilderFormContext = createContext<SheetBuilderFormContextType>(null as unknown as SheetBuilderFormContextType)
 
-export const SheetBuilderSectionContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
+export const SheetBuilderFormContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [race, setRace] = useState<RaceInterface>()
   const [role, setRole] = useState<RoleInterface>()
   const [error, setError] = useState<string>()
@@ -51,7 +51,7 @@ export const SheetBuilderSectionContextProvider: React.FC<PropsWithChildren> = (
     }
   }
 
-  return <SheetBuilderSectionContext.Provider value={{
+  return <SheetBuilderFormContext.Provider value={{
     race, setRace,
     attributesLauncher, setAttributesLauncher,
     role, setRole,
@@ -60,5 +60,5 @@ export const SheetBuilderSectionContextProvider: React.FC<PropsWithChildren> = (
     confirmRace, chooseRaceStep
   }}>
     {children}
-  </SheetBuilderSectionContext.Provider>
+  </SheetBuilderFormContext.Provider>
 }

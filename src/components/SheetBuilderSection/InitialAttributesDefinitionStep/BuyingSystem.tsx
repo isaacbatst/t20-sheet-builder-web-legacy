@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Attribute } from 't20-sheet-builder'
-import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext'
+import { SheetBuilderFormContext } from '../SheetBuilderFormContext'
 import AttributeInput from './AttributeInput'
 
 const BuyingSystemSection: React.FC = () => {
-  const { attributesLauncher, setAttributesLauncher } = useContext(SheetBuilderSectionContext)
+  const { attributesLauncher, setAttributesLauncher } = useContext(SheetBuilderFormContext)
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import { enableMapSet } from 'immer'
 import Head from 'next/head'
-import SheetBuilderSection from '../components/SheetBuilderSection/SheetBuilderSection'
-import { SheetBuilderSectionContextProvider } from '../components/SheetBuilderSection/SheetBuilderSectionContext'
+import SheetBuilderFormView from '../components/SheetBuilderSection/SheetBuilderFormView'
+import { SheetBuilderFormContextProvider } from '../components/SheetBuilderSection/SheetBuilderFormContext'
 
 enableMapSet()
 
@@ -16,9 +16,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='text-center min-h-screen'>
-        <SheetBuilderSectionContextProvider>
-            <SheetBuilderSection />
-        </SheetBuilderSectionContextProvider>
+        <SheetBuilderFormContextProvider>
+            <SheetBuilderFormView />
+        </SheetBuilderFormContextProvider>
       </main>
     </>
   )

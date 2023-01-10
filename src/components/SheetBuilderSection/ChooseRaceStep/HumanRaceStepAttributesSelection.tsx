@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
 import Checkbox from '../../common/Checkbox/Checkbox';
-import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext';
+import { SheetBuilderFormContext } from '../SheetBuilderFormContext';
 import { HumanRaceStepAttributesSelectorInterface } from './HumanRaceStepAttributesSelector';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 }
 
 const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
-  const context= useContext(SheetBuilderSectionContext)
+  const context= useContext(SheetBuilderFormContext)
   
   return (
     <div>

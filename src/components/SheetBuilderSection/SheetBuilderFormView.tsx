@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import Alert from '../common/Alert'
 import Button from '../common/Button/Button'
-import { SheetBuilderSectionContext } from './SheetBuilderSectionContext'
+import { SheetBuilderFormContext } from './SheetBuilderFormContext'
 
-const SheetBuilderSection: React.FC = () => {
-  const { sheetBuilderSteps, error } = useContext(SheetBuilderSectionContext)
+const SheetBuilderFormView: React.FC = () => {
+  const { sheetBuilderSteps, error } = useContext(SheetBuilderFormContext)
 
   return (
     <div className='container mx-auto'>
@@ -17,4 +17,4 @@ const SheetBuilderSection: React.FC = () => {
   )
 }
 
-export default SheetBuilderSection
+export default SheetBuilderFormView

@@ -3,7 +3,7 @@ import Select from 'react-select';
 import { RaceName, Translator } from 't20-sheet-builder';
 import { Option } from '../../../domain/entities/Option';
 import Button from '../../common/Button/Button';
-import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext';
+import { SheetBuilderFormContext } from '../SheetBuilderFormContext';
 import { RaceStepComponentHuman } from './RaceStepComponentHuman';
 
 const options: Option<RaceName>[] = Object.values(RaceName)
@@ -12,7 +12,7 @@ const options: Option<RaceName>[] = Object.values(RaceName)
 const raceComponent = new RaceStepComponentHuman();
 
 const ChooseRaceStepView: React.FC = () => {
-  const context = useContext(SheetBuilderSectionContext);
+  const context = useContext(SheetBuilderFormContext);
   const selectedRace = context.chooseRaceStep.getRace();
 
   return (

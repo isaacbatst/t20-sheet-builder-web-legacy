@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import Button from '../../common/Button/Button'
-import { SheetBuilderSectionContext } from '../SheetBuilderSectionContext'
+import { SheetBuilderFormContext } from '../SheetBuilderFormContext'
 import BuyingSystem from './BuyingSystem'
 
 
 const InitialAttributesDefinitionStep: React.FC = () => {
-  const { sheetBuilderSteps } = useContext(SheetBuilderSectionContext)
+  const { sheetBuilderSteps } = useContext(SheetBuilderFormContext)
 
   return (
     <div className='mb-6'>
