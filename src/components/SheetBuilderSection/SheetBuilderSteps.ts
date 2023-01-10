@@ -5,6 +5,8 @@ import { SheetBuilderStepInterface } from "./SheetBuilderStepInterface"
 
 export type SheetBuilderStepsInterface = {
   next(): void
+  previous(): void
+  shouldShowPrevious(): boolean
   getDTO(): SheetBuilderStepsDTO
   getCurrent(): SheetBuilderStepInterface
 }
@@ -20,6 +22,22 @@ export class SheetBuilderSteps implements SheetBuilderStepsInterface {
     new SheetBuilderStepChooseRole()
   ]
   current: number = 0
+
+  previous() {
+    const previousIndex = this.current - 1;
+
+    if(previousIndex < 0) {
+      throw new Error('FIRST_STEP')
+    }
+
+    this.current = previousIndex
+  }
+
+  shouldShowPrevious(): boolean {
+    const previousIndex = this.current - 1;
+
+    return previousIndex >= 0
+  }
 
   next() {
     const nextIndex = this.current + 1;

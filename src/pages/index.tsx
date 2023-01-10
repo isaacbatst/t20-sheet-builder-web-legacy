@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="google-site-verification" content="A1PBUnkWuS_DQFxOtFEs984kX9ClcJV8JRASYzZY4Ao" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='text-center'>
+      <main className='text-center min-h-screen'>
         <SheetBuilderSectionContextProvider>
             <SheetBuilderSection />
         </SheetBuilderSectionContextProvider>

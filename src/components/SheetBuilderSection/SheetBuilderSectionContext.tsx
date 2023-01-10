@@ -3,7 +3,9 @@ import { RaceInterface, RoleInterface } from "t20-sheet-builder";
 import { Updater, useImmer } from "use-immer";
 import { AttributesLauncherPerPurchase } from "../../domain/entities/AttributesBuyingSystem";
 import { AttributesLauncherPerPurchaseImmerable } from "../../infra/immerable/ImmerableAttributesBuyingSystem";
+import { ChooseRaceStepProjectionDecorator } from "./ChooseRaceStep/ChooseRaceStepProjectionDecorator";
 import { RaceStepInterface } from "./ChooseRaceStep/RaceStep";
+import { useChooseRaceStepProjection } from "./ChooseRaceStep/useChooseRaceStepProjection";
 import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
 import { useSheetBuilderStepsProjection } from "./useSheetBuilderStepsProjection";
 
@@ -13,6 +15,7 @@ type SheetBuilderSectionContextType = {
   role?: RoleInterface,
   error?: string,
   sheetBuilderSteps: SheetBuilderStepsInterface
+  chooseRaceStep: ChooseRaceStepProjectionDecorator
   setAttributesLauncher: Updater<AttributesLauncherPerPurchase>
   setRace: (race?: RaceInterface) => void,
   setRole: (role: RoleInterface) => void,
@@ -28,6 +31,7 @@ export const SheetBuilderSectionContextProvider: React.FC<PropsWithChildren> = (
   const [error, setError] = useState<string>()
   const [attributesLauncher, setAttributesLauncher] = useImmer<AttributesLauncherPerPurchase>(new AttributesLauncherPerPurchaseImmerable({strength: 0 , dexterity: 0, constitution: 0,  intelligence: 0 , wisdom: 0, charisma: 0  }))
   const sheetBuilderSteps = useSheetBuilderStepsProjection();
+  const chooseRaceStep = useChooseRaceStepProjection();
 
   const confirmRace = (selectedRace: RaceStepInterface | undefined) => {
     try {
@@ -53,7 +57,7 @@ export const SheetBuilderSectionContextProvider: React.FC<PropsWithChildren> = (
     role, setRole,
     sheetBuilderSteps,
     error, setError,
-    confirmRace
+    confirmRace, chooseRaceStep
   }}>
     {children}
   </SheetBuilderSectionContext.Provider>
