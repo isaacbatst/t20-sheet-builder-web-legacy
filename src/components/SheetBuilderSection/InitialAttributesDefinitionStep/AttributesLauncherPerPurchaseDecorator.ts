@@ -5,6 +5,10 @@ import { AttributesLauncherPerPurchaseDTO, AttributesLauncherPerPurchaseInterfac
 export class AttributesLauncherPerPurchaseDecorator implements AttributesLauncherPerPurchaseInterface {
   constructor(protected attributesLauncherPerPurchase: AttributesLauncherPerPurchaseInterface){}
   
+  confirm(): void {
+    this.attributesLauncherPerPurchase.confirm()
+  }
+  
   getDTO(): AttributesLauncherPerPurchaseDTO {
     return this.attributesLauncherPerPurchase.getDTO()
   }

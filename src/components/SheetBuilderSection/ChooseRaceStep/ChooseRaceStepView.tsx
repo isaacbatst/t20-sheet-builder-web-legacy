@@ -14,7 +14,7 @@ const raceComponent = new RaceStepComponentHuman();
 const ChooseRaceStepView: React.FC = () => {
   const {sheetBuilderForm} = useSheetBuilderFormContext();
   const chooseRaceStep = sheetBuilderForm.getChooseRaceStep()
-  const selectedRace = chooseRaceStep.getRace();
+  const raceStep = chooseRaceStep.getRaceStep();
 
   return (
     <div className='flex flex-col items-center mb-6'>
@@ -23,14 +23,14 @@ const ChooseRaceStepView: React.FC = () => {
         <Select 
           options={options} 
           placeholder="Raça"
-          value={selectedRace && { label: Translator.getRaceTranslation(selectedRace.raceName), value: selectedRace.raceName }}
+          value={raceStep && { label: Translator.getRaceTranslation(raceStep.raceName), value: raceStep.raceName }}
           onChange={(selected) => selected && chooseRaceStep.selectRace(chooseRaceStep.makeRaceStep(selected.value))} 
           instanceId='choose-race'
         />
       </div>
-      {selectedRace && raceComponent.render(chooseRaceStep)}
-      <Button disabled={!selectedRace} onClick={() => {
-        sheetBuilderForm.confirmRace(selectedRace)
+      {raceStep && raceComponent.render(raceStep)}
+      <Button disabled={!raceStep} onClick={() => {
+        sheetBuilderForm.confirmRace(raceStep)
       }}>
         Confirmar Raça
       </Button>

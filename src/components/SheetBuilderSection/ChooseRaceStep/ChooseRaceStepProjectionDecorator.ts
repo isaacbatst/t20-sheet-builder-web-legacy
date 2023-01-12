@@ -12,8 +12,9 @@ export class ChooseRaceStepProjectionDecorator extends ChooseRaceStepDecorator {
     super(chooseRaceStep)
   }
 
-  getRace() {
-    return super.getRace()
+  confirm(raceStep: RaceStepInterface | undefined): void {
+    super.confirm(raceStep);
+    this.setProjection(this.getDTO())
   }
 
   selectRace(raceStep: RaceStepInterface) {
@@ -23,13 +24,13 @@ export class ChooseRaceStepProjectionDecorator extends ChooseRaceStepDecorator {
 
   makeRaceStep(raceName: RaceName): RaceStepInterface {
     const raceStep = super.makeRaceStep(raceName);
-    const decoratorFactory = new RaceStepProjectionDecoratorFactory(
+    const raceStepDecoratorFactory = new RaceStepProjectionDecoratorFactory(
       raceStep, 
       (raceStep) => this.setProjection({
         ...this.getDTO(),
         race: raceStep.raceName
       }))
     
-    return decoratorFactory.make(raceName)
+    return raceStepDecoratorFactory.make(raceName)
   }
 }

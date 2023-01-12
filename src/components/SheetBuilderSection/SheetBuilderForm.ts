@@ -17,6 +17,8 @@ export type SheetBuilderFormInterface = {
   getChooseRaceStep(): ChooseRaceStepInterface
   getSheetBuilderSteps(): SheetBuilderStepsInterface
   confirmRace(selectedRace: RaceStepInterface | undefined): void
+  confirmInitialAttributes(): void
+  previous(): void
 }
 
 export class SheetBuilderForm implements SheetBuilderFormInterface {
@@ -30,21 +32,28 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
     private chooseRaceStep: ChooseRaceStepInterface
   ){}
 
+  previous() {
+    this.sheetBuilderSteps.previous()
+    this.error = undefined
+  }
+
+  confirmInitialAttributes(): void {
+    try {
+      this.error = undefined
+      this.attributesLauncher.confirm()
+      this.sheetBuilderSteps.next()
+    } catch(err){
+      this.handleError(err)
+    }
+  }
 
   confirmRace(selectedRace: RaceStepInterface | undefined): void {
     try {
       this.error = undefined
-      if(!selectedRace) throw new Error('UNDEFINED_RACE')
-
-      this.race = selectedRace.build()
+      this.chooseRaceStep.confirm(selectedRace)
       this.sheetBuilderSteps.next()
     } catch(err) {
-      if(!(err instanceof Error)){
-        this.error = 'UNKNOWN_ERROR';
-        return
-      }
-
-      this.error = err.message
+      this.handleError(err)
     }
   }
 
@@ -68,5 +77,14 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
 
   getError(): string | undefined {
     return this.error
+  }
+
+  private handleError(error: unknown) {
+    if(!(error instanceof Error)){
+      this.error = 'UNKNOWN_ERROR';
+      return
+    }
+
+    this.error = error.message
   }
 }

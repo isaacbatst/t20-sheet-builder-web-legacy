@@ -11,7 +11,7 @@ const InitialAttributesDefinitionStep: React.FC = () => {
     <div className='mb-6'>
       <h2 className='mb-3'>1 - Atributos Iniciais</h2>
       <BuyingSystem />
-      <Button onClick={() => sheetBuilderForm.getSheetBuilderSteps().next()}>
+      <Button onClick={() => sheetBuilderForm.confirmInitialAttributes()}>
         Confirmar
       </Button>
     </div>

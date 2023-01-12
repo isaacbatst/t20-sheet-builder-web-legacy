@@ -12,6 +12,7 @@ export type AttributesLauncherPerPurchaseInterface = {
   decrement(attribute: Attribute): void
   increment(attribute: Attribute): void
   setAttribute(attribute: Attribute, value: number): void
+  confirm(): void
 }
 
 export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurchaseInterface {
@@ -29,6 +30,12 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
   private points = 10;
 
   constructor(private attributes: Attributes = AttributesLauncherPerPurchase.defaultAttributes){}
+
+  confirm(): void {
+    if(this.points > 0) {
+      throw new Error('POINTS_LEFT')
+    }
+  }
 
   setAttribute(attribute: keyof Attributes, value: number): void {
     this.attributes[attribute] = value

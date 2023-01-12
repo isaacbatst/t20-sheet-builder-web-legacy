@@ -8,6 +8,12 @@ export class SheetBuilderFormDecorator implements SheetBuilderFormInterface {
   constructor(
     protected sheetBuilderForm: SheetBuilderFormInterface
   ){}
+  confirmInitialAttributes(): void {
+    this.sheetBuilderForm.confirmInitialAttributes()
+  }
+  previous(): void {
+    this.sheetBuilderForm.previous()
+  }
   confirmRace(selectedRace: RaceStepInterface | undefined): void {
     this.sheetBuilderForm.confirmRace(selectedRace)
   }

@@ -10,6 +10,11 @@ export class AttributesLauncherPerPurchaseProjectionDecorator extends Attributes
   ){
     super(attributesLauncherPerPurchase)
   }
+
+  confirm(): void {
+    super.confirm();
+    this.setProjection(this.getDTO())
+  }
   
   setAttribute(attribute: keyof Attributes, value: number): void {
     super.setAttribute(attribute, value)

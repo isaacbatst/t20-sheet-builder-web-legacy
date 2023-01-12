@@ -1,6 +1,6 @@
-import { ChooseRaceStepInterface } from "./ChooseRaceStep"
+import { RaceStepInterface } from "./RaceStep"
 
 export type RaceStepComponent = {
   next?: RaceStepComponent
-  render(raceStep: ChooseRaceStepInterface): JSX.Element | undefined
+  render(raceStep: RaceStepInterface): JSX.Element | undefined
 }

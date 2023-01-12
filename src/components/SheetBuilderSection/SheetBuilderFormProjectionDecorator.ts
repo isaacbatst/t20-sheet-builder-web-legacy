@@ -10,6 +10,16 @@ export class SheetBuilderFormProjectionDecorator extends SheetBuilderFormDecorat
     super(sheetBuilderForm);
   }
 
+  confirmInitialAttributes(): void {
+    super.confirmInitialAttributes();
+    this.setProjection(this.getDTO())
+  }
+
+  previous(): void {
+    super.previous()
+    this.setProjection(this.getDTO())
+  }
+
   confirmRace(selectedRace: RaceStepInterface | undefined): void {
     super.confirmRace(selectedRace);
     this.setProjection(this.getDTO())

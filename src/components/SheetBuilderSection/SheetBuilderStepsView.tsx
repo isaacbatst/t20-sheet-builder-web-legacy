@@ -9,7 +9,7 @@ const SheetBuilderStepsView: React.FC = () => {
     <>
       {sheetBuilderSteps.getCurrent().getComponent()}
       {sheetBuilderSteps.shouldShowPrevious() 
-        && <Button onClick={() => sheetBuilderSteps.previous()} >Voltar</Button>}
+        && <Button onClick={() => sheetBuilderForm.previous()} >Voltar</Button>}
     </>
   )
 }
