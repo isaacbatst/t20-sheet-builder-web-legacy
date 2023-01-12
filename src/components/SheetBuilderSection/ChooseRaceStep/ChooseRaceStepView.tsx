@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Select from 'react-select';
 import { RaceName, Translator } from 't20-sheet-builder';
 import { Option } from '../../../domain/entities/Option';
 import Button from '../../common/Button/Button';
-import { SheetBuilderFormContext } from '../SheetBuilderFormContext';
+import { useSheetBuilderFormContext } from '../SheetBuilderFormContext';
 import { RaceStepComponentHuman } from './RaceStepComponentHuman';
 
 const options: Option<RaceName>[] = Object.values(RaceName)
@@ -12,8 +12,9 @@ const options: Option<RaceName>[] = Object.values(RaceName)
 const raceComponent = new RaceStepComponentHuman();
 
 const ChooseRaceStepView: React.FC = () => {
-  const context = useContext(SheetBuilderFormContext);
-  const selectedRace = context.chooseRaceStep.getRace();
+  const {sheetBuilderForm} = useSheetBuilderFormContext();
+  const chooseRaceStep = sheetBuilderForm.getChooseRaceStep()
+  const selectedRace = chooseRaceStep.getRace();
 
   return (
     <div className='flex flex-col items-center mb-6'>
@@ -23,12 +24,14 @@ const ChooseRaceStepView: React.FC = () => {
           options={options} 
           placeholder="Raça"
           value={selectedRace && { label: Translator.getRaceTranslation(selectedRace.raceName), value: selectedRace.raceName }}
-          onChange={(selected) => selected && context.chooseRaceStep.selectRace(selected.value)} 
+          onChange={(selected) => selected && chooseRaceStep.selectRace(chooseRaceStep.makeRaceStep(selected.value))} 
           instanceId='choose-race'
         />
       </div>
-      {selectedRace && raceComponent.render(context.chooseRaceStep)}
-      <Button disabled={!selectedRace} onClick={() => context.confirmRace(selectedRace)}>
+      {selectedRace && raceComponent.render(chooseRaceStep)}
+      <Button disabled={!selectedRace} onClick={() => {
+        sheetBuilderForm.confirmRace(selectedRace)
+      }}>
         Confirmar Raça
       </Button>
   </div>

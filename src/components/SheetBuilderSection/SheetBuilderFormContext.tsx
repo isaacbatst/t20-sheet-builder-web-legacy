@@ -1,64 +1,36 @@
-import { createContext, PropsWithChildren, useState } from "react";
-import { RaceInterface, RoleInterface } from "t20-sheet-builder";
-import { Updater, useImmer } from "use-immer";
-import { AttributesLauncherPerPurchase } from "../../domain/entities/AttributesBuyingSystem";
-import { AttributesLauncherPerPurchaseImmerable } from "../../infra/immerable/ImmerableAttributesBuyingSystem";
-import { ChooseRaceStepProjectionDecorator } from "./ChooseRaceStep/ChooseRaceStepProjectionDecorator";
-import { RaceStepInterface } from "./ChooseRaceStep/RaceStep";
+import { createContext, PropsWithChildren, useContext } from "react";
+import { ChooseRaceStep } from "./ChooseRaceStep/ChooseRaceStep";
 import { useChooseRaceStepProjection } from "./ChooseRaceStep/useChooseRaceStepProjection";
-import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
+import { AttributesLauncherPerPurchase } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
+import { useAttributesLauncherPerPurchaseProjection } from "./InitialAttributesDefinitionStep/useAttributesLauncherPerPurchaseProjection";
+import { SheetBuilderFormInterface } from "./SheetBuilderForm";
+import { SheetBuilderSteps } from "./SheetBuilderSteps";
+import { useSheetBuilderFormProjection } from "./useSheetBuilderFormProjection";
 import { useSheetBuilderStepsProjection } from "./useSheetBuilderStepsProjection";
 
 type SheetBuilderFormContextType = {
-  attributesLauncher: AttributesLauncherPerPurchase
-  race?: RaceInterface,
-  role?: RoleInterface,
-  error?: string,
-  sheetBuilderSteps: SheetBuilderStepsInterface
-  chooseRaceStep: ChooseRaceStepProjectionDecorator
-  setAttributesLauncher: Updater<AttributesLauncherPerPurchase>
-  setRace: (race?: RaceInterface) => void,
-  setRole: (role: RoleInterface) => void,
-  setError: (error?: string) => void,
-  confirmRace: (selectedRace: RaceStepInterface | undefined) => void
+  sheetBuilderForm: SheetBuilderFormInterface,
 }
 
-export const SheetBuilderFormContext = createContext<SheetBuilderFormContextType>(null as unknown as SheetBuilderFormContextType)
+const SheetBuilderFormContext = createContext<SheetBuilderFormContextType>(null as unknown as SheetBuilderFormContextType)
 
 export const SheetBuilderFormContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [race, setRace] = useState<RaceInterface>()
-  const [role, setRole] = useState<RoleInterface>()
-  const [error, setError] = useState<string>()
-  const [attributesLauncher, setAttributesLauncher] = useImmer<AttributesLauncherPerPurchase>(new AttributesLauncherPerPurchaseImmerable({strength: 0 , dexterity: 0, constitution: 0,  intelligence: 0 , wisdom: 0, charisma: 0  }))
-  const sheetBuilderSteps = useSheetBuilderStepsProjection();
-  const chooseRaceStep = useChooseRaceStepProjection();
-
-  const confirmRace = (selectedRace: RaceStepInterface | undefined) => {
-    try {
-      setError(undefined)
-      if(!selectedRace) throw new Error('UNDEFINED_RACE')
-
-      if(selectedRace) {
-        setRace(selectedRace.build())
-        sheetBuilderSteps.next()
-      }
-    } catch(err) {
-      if(!(err instanceof Error)){
-        return setError('UNKNOWN ERROR')
-      }
-
-      setError(err.message)
-    }
-  }
+  const sheetBuilderSteps = useSheetBuilderStepsProjection(new SheetBuilderSteps())
+  const attributesLauncher = useAttributesLauncherPerPurchaseProjection(new AttributesLauncherPerPurchase())
+  const chooseRaceStep = useChooseRaceStepProjection(new ChooseRaceStep())
+  const sheetBuilderForm = useSheetBuilderFormProjection(sheetBuilderSteps, attributesLauncher, chooseRaceStep);
 
   return <SheetBuilderFormContext.Provider value={{
-    race, setRace,
-    attributesLauncher, setAttributesLauncher,
-    role, setRole,
-    sheetBuilderSteps,
-    error, setError,
-    confirmRace, chooseRaceStep
+    sheetBuilderForm,
   }}>
     {children}
   </SheetBuilderFormContext.Provider>
+}
+
+export const useSheetBuilderFormContext = () => {
+  const context = useContext(SheetBuilderFormContext)
+
+  if(!context) throw new Error('MISSING_PROVIDER')
+
+  return context
 }

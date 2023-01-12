@@ -11,11 +11,11 @@ export class SheetBuilderStepsProjectionDecorator extends SheetBuilderStepsDecor
 
   next(): void {
     super.next()
-    this.setProjection(this.sheetBuilderSteps.getDTO())
+    this.setProjection(this.getDTO())
   }
 
   previous(): void {
     super.previous()
-    this.setProjection(this.sheetBuilderSteps.getDTO())
+    this.setProjection(this.getDTO())
   }
 }

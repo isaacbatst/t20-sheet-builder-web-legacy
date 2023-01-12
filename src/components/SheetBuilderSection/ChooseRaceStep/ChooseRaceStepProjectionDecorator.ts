@@ -1,7 +1,7 @@
 import { RaceName } from "t20-sheet-builder";
 import { ChooseRaceStepDTO, ChooseRaceStepInterface } from "./ChooseRaceStep";
 import { ChooseRaceStepDecorator } from "./ChooseRaceStepDecorator";
-import { RaceStepFactory } from "./RaceStepFactory";
+import { RaceStepInterface } from "./RaceStep";
 import { RaceStepProjectionDecoratorFactory } from "./RaceStepProjectionDecoratorFactory";
 
 export class ChooseRaceStepProjectionDecorator extends ChooseRaceStepDecorator {
@@ -16,16 +16,20 @@ export class ChooseRaceStepProjectionDecorator extends ChooseRaceStepDecorator {
     return super.getRace()
   }
 
-  selectRace(race: RaceName) {
-    const raceStep = new RaceStepFactory().make(race)
-    const factory = new RaceStepProjectionDecoratorFactory(
+  selectRace(raceStep: RaceStepInterface) {
+    super.selectRace(raceStep)
+    this.setProjection(this.getDTO())
+  }
+
+  makeRaceStep(raceName: RaceName): RaceStepInterface {
+    const raceStep = super.makeRaceStep(raceName);
+    const decoratorFactory = new RaceStepProjectionDecoratorFactory(
       raceStep, 
       (raceStep) => this.setProjection({
         ...this.getDTO(),
         race: raceStep.raceName
       }))
     
-    super.selectRace(race, factory)
-    this.setProjection(this.getDTO())
+    return decoratorFactory.make(raceName)
   }
 }

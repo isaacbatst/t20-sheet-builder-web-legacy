@@ -4,8 +4,9 @@ import { RaceStepFactory } from "./RaceStepFactory";
 
 export type ChooseRaceStepInterface = {
   getRace(): RaceStepInterface | undefined
-  selectRace(race: RaceName, factory: RaceStepFactory): void
+  selectRace(raceStep: RaceStepInterface): void
   getDTO(): ChooseRaceStepDTO
+  makeRaceStep(raceName: RaceName): RaceStepInterface 
 }
 
 export type ChooseRaceStepDTO = {
@@ -25,7 +26,11 @@ export class ChooseRaceStep implements ChooseRaceStepInterface {
     return this.raceStep
   }
 
-  selectRace(race: RaceName, factory: RaceStepFactory) {
-    this.raceStep = factory.make(race);
+  selectRace(raceStep: RaceStepInterface) {
+    this.raceStep = raceStep
+  }
+
+  makeRaceStep(raceName: RaceName): RaceStepInterface {
+    return new RaceStepFactory().make(raceName)
   }
 }

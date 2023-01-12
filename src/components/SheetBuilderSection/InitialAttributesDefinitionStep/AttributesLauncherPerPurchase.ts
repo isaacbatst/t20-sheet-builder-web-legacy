@@ -1,6 +1,20 @@
 import { Attribute, Attributes } from "t20-sheet-builder";
 
-export class AttributesLauncherPerPurchase {
+export type AttributesLauncherPerPurchaseDTO = {
+  points: number,
+  attributes: Attributes  
+}
+
+export type AttributesLauncherPerPurchaseInterface = {
+  getPoints(): number
+  getAttributes(): Attributes
+  getDTO(): AttributesLauncherPerPurchaseDTO
+  decrement(attribute: Attribute): void
+  increment(attribute: Attribute): void
+  setAttribute(attribute: Attribute, value: number): void
+}
+
+export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurchaseInterface {
   static price: Record<number, number> = {
     [-1]: -1,
     [0]: 0,
@@ -10,19 +24,32 @@ export class AttributesLauncherPerPurchase {
     [4]: 7
   }
 
+  static defaultAttributes = {strength: 0 , dexterity: 0, constitution: 0,  intelligence: 0 , wisdom: 0, charisma: 0  }
+
   private points = 10;
 
-  constructor(readonly attributes: Attributes){}
+  constructor(private attributes: Attributes = AttributesLauncherPerPurchase.defaultAttributes){}
+
+  setAttribute(attribute: keyof Attributes, value: number): void {
+    this.attributes[attribute] = value
+  }
+
+  getAttributes(): Attributes {
+    return this.attributes
+  }
 
   getPoints() {
     return this.points
   }
 
-  setAttribute(attribute: Attribute, value: number) {
-    this.attributes[attribute] = value
+  getDTO(): AttributesLauncherPerPurchaseDTO {
+    return {
+      attributes: this.getAttributes(),
+      points: this.getPoints()
+    }
   }
 
-  increment(attribute: Attribute): void {
+  increment(attribute: Attribute): void {    
     const currentAttribute = this.attributes[attribute]
     if(this.points === 0) {
       this.attributes[attribute] = currentAttribute;

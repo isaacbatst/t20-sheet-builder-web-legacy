@@ -1,17 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Button from '../../common/Button/Button'
-import { SheetBuilderFormContext } from '../SheetBuilderFormContext'
-import BuyingSystem from './BuyingSystem'
+import { useSheetBuilderFormContext } from '../SheetBuilderFormContext'
+import BuyingSystem from './AttributesLauncherPerPurchaseView'
 
 
 const InitialAttributesDefinitionStep: React.FC = () => {
-  const { sheetBuilderSteps } = useContext(SheetBuilderFormContext)
+  const { sheetBuilderForm } = useSheetBuilderFormContext();
 
   return (
     <div className='mb-6'>
       <h2 className='mb-3'>1 - Atributos Iniciais</h2>
       <BuyingSystem />
-      <Button onClick={() => sheetBuilderSteps.next()}>
+      <Button onClick={() => sheetBuilderForm.getSheetBuilderSteps().next()}>
         Confirmar
       </Button>
     </div>

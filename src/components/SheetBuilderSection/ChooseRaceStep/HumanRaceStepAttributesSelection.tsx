@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
 import Checkbox from '../../common/Checkbox/Checkbox';
-import { SheetBuilderFormContext } from '../SheetBuilderFormContext';
+import { useSheetBuilderFormContext } from '../SheetBuilderFormContext';
 import { HumanRaceStepAttributesSelectorInterface } from './HumanRaceStepAttributesSelector';
 
 type Props = {
@@ -9,7 +9,9 @@ type Props = {
 }
 
 const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
-  const context= useContext(SheetBuilderFormContext)
+  const {sheetBuilderForm} = useSheetBuilderFormContext()
+  const attributesLauncher = sheetBuilderForm.getAttributesLauncher()
+  const attributes = attributesLauncher.getAttributes()
   
   return (
     <div>
@@ -22,7 +24,8 @@ const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
             key={key} handleChange={() => selector.toggleAttribute(attribute)}               
             checked={value} 
           > 
-            {Translator.getAttributeTranslation(attribute)} ({selector.getDTO().attributes[attribute] ? context.attributesLauncher.attributes[attribute] + 1 : context.attributesLauncher.attributes[attribute]})
+            {Translator.getAttributeTranslation(attribute)} 
+            ({selector.getDTO().attributes[attribute] ? attributes[attribute] + 1 : attributes[attribute]})
           </Checkbox>
         )
       })}

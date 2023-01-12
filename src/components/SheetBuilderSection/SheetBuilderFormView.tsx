@@ -1,18 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Alert from '../common/Alert'
-import Button from '../common/Button/Button'
-import { SheetBuilderFormContext } from './SheetBuilderFormContext'
+import { useSheetBuilderFormContext } from './SheetBuilderFormContext'
+import SheetBuilderStepsView from './SheetBuilderStepsView'
 
 const SheetBuilderFormView: React.FC = () => {
-  const { sheetBuilderSteps, error } = useContext(SheetBuilderFormContext)
-
+  const {sheetBuilderForm} = useSheetBuilderFormContext();
+  const error = sheetBuilderForm.getError();
+  
   return (
     <div className='container mx-auto'>
       <h1>Sheet Builder</h1>
       {error && <Alert>{error}</Alert>}
-      {sheetBuilderSteps.getCurrent().getComponent()}
-      {sheetBuilderSteps.shouldShowPrevious() 
-        && <Button onClick={() => sheetBuilderSteps.previous()} >Voltar</Button>}
+      <SheetBuilderStepsView />
     </div>
   )
 }

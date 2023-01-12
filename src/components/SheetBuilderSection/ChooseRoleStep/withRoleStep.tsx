@@ -4,7 +4,7 @@ import { useImmer } from "use-immer";
 import { RoleFactory } from "../../../domain/entities/RoleFactory";
 import { ImmerableRoleSkillSelectors } from "../../../infra/immerable/ImmerableRoleSkillSelectors";
 import Button from "../../common/Button/Button";
-import { SheetBuilderFormContext } from "../SheetBuilderFormContext";
+import { useSheetBuilderFormContext } from "../SheetBuilderFormContext";
 import RoleSkillSelection from "./RoleSkillSelection";
 
 export type RoleStepWrapperProps = {
@@ -20,7 +20,7 @@ export type CreateRole = () => RoleInterface
 
 const withRoleWrapper = (RoleComponent:  React.FC<RoleStepWrappedProps>) => {
   const WithRoleWrapper: React.FC<RoleStepWrapperProps> = ({ role: {selectSkillGroups} }) => {
-    const context = useContext(SheetBuilderFormContext);
+    const {sheetBuilderForm} = useSheetBuilderFormContext()
     const [roleSkillSelectors, setRoleSkillGroupSelector] = useImmer(new ImmerableRoleSkillSelectors(selectSkillGroups))
     const [roleFactory, setRoleFactory] = useImmer<RoleFactory | undefined>(undefined)
     
@@ -44,8 +44,7 @@ const withRoleWrapper = (RoleComponent:  React.FC<RoleStepWrappedProps>) => {
           onClick={() => {
             if(!roleFactory) throw new Error('UNDEFINED_ROLE_BUILDER')
 
-            context.setRole(roleFactory.make())
-            context.sheetBuilderSteps.next()
+            
           }}
         >
           Confirmar Classe
