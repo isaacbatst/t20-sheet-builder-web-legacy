@@ -14,8 +14,8 @@ export class SheetBuilderFormDecorator implements SheetBuilderFormInterface {
   previous(): void {
     this.sheetBuilderForm.previous()
   }
-  confirmRace(selectedRace: RaceStepInterface | undefined): void {
-    this.sheetBuilderForm.confirmRace(selectedRace)
+  confirmRace(): void {
+    this.sheetBuilderForm.confirmRace()
   }
   getAttributesLauncher(): AttributesLauncherPerPurchaseInterface {
     return this.sheetBuilderForm.getAttributesLauncher()

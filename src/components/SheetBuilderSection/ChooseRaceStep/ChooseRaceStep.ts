@@ -8,7 +8,7 @@ export type ChooseRaceStepInterface = {
   selectRace(raceStep: RaceStepInterface): void
   getDTO(): ChooseRaceStepDTO
   makeRaceStep(raceName: RaceName): RaceStepInterface 
-  confirm(raceStep: RaceStepInterface | undefined): void
+  confirm(): void
 }
 
 export type ChooseRaceStepDTO = {
@@ -19,9 +19,9 @@ export class ChooseRaceStep implements ChooseRaceStepInterface {
   private raceStep?: RaceStepInterface;
   private race?: RaceInterface
 
-  confirm(raceStep: RaceStepInterface | undefined): void {
-    if(!raceStep) throw new Error('UNDEFINED_RACE')
-    this.race = raceStep.build()
+  confirm(): void {
+    if(!this.raceStep) throw new Error('UNDEFINED_RACE')
+    this.race = this.raceStep.build()
   }
 
   getDTO(): ChooseRaceStepDTO {

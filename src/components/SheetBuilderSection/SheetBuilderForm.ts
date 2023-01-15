@@ -16,7 +16,7 @@ export type SheetBuilderFormInterface = {
   getAttributesLauncher(): AttributesLauncherPerPurchaseInterface
   getChooseRaceStep(): ChooseRaceStepInterface
   getSheetBuilderSteps(): SheetBuilderStepsInterface
-  confirmRace(selectedRace: RaceStepInterface | undefined): void
+  confirmRace(): void
   confirmInitialAttributes(): void
   previous(): void
 }
@@ -47,10 +47,10 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
     }
   }
 
-  confirmRace(selectedRace: RaceStepInterface | undefined): void {
+  confirmRace(): void {
     try {
       this.error = undefined
-      this.chooseRaceStep.confirm(selectedRace)
+      this.chooseRaceStep.confirm()
       this.sheetBuilderSteps.next()
     } catch(err) {
       this.handleError(err)
