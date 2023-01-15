@@ -17,9 +17,8 @@ const AttributesLauncherPerPurchaseView: React.FC = () => {
           return (
             <AttributeInput 
               key={attribute} 
-              attribute={attribute as Attribute} 
+              attribute={attribute} 
               value={value} 
-              setValue={(newValue) => attributesLauncher.setAttribute(attribute, newValue)}
               decrement={() => attributesLauncher.decrement(attribute)} 
               increment={() => attributesLauncher.increment(attribute)} 
             />

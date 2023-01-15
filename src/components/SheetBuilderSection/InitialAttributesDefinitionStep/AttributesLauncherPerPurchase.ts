@@ -11,7 +11,6 @@ export type AttributesLauncherPerPurchaseInterface = {
   getDTO(): AttributesLauncherPerPurchaseDTO
   decrement(attribute: Attribute): void
   increment(attribute: Attribute): void
-  setAttribute(attribute: Attribute, value: number): void
   confirm(): void
 }
 
@@ -34,25 +33,6 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
   confirm(): void {
     if(this.points > 0) {
       throw new Error('POINTS_LEFT')
-    }
-  }
-
-  setAttribute(attribute: keyof Attributes, value: number): void {
-    this.attributes[attribute] = value
-  }
-
-  getAttributes(): Attributes {
-    return this.attributes
-  }
-
-  getPoints() {
-    return this.points
-  }
-
-  getDTO(): AttributesLauncherPerPurchaseDTO {
-    return {
-      attributes: this.getAttributes(),
-      points: this.getPoints()
     }
   }
 
@@ -87,5 +67,21 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
     const result = currentAttribute - 1;
     this.points += Math.abs(AttributesLauncherPerPurchase.price[currentAttribute] - AttributesLauncherPerPurchase.price[result])
     this.attributes[attribute] = result;
+  }
+
+  
+  getAttributes(): Attributes {
+    return this.attributes
+  }
+
+  getPoints() {
+    return this.points
+  }
+
+  getDTO(): AttributesLauncherPerPurchaseDTO {
+    return {
+      attributes: this.getAttributes(),
+      points: this.getPoints()
+    }
   }
 }
