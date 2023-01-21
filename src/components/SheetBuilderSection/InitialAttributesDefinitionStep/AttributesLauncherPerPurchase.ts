@@ -25,7 +25,7 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
 
   constructor(private attributes: Attributes = AttributesLauncherPerPurchase.defaultAttributes){}
 
-  buy(attribute: Attribute): void {    
+  buy(attribute: Attribute): void {   
     const currentAttribute = this.attributes[attribute]
     if(this.points === 0) {
       throw new Error('ZERO_POINTS')

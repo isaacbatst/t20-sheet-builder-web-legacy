@@ -1,16 +1,19 @@
 import React from 'react'
 import { Attribute } from 't20-sheet-builder'
-import { useSheetBuilderFormContext } from '../SheetBuilderFormContext'
 import AttributeInput from './AttributeInput'
+import { AttributesLauncherPerPurchaseInterface } from './AttributesLauncherPerPurchase'
 
-const AttributesLauncherPerPurchaseView: React.FC = () => {
-  const {sheetBuilderForm} = useSheetBuilderFormContext()
-  const attributesLauncher = sheetBuilderForm.getAttributesLauncher()
+type Props = {
+  attributesLauncher: AttributesLauncherPerPurchaseInterface
+}
+
+const AttributesLauncherPerPurchaseView: React.FC<Props> = ({ attributesLauncher }) => {
   const attributes = attributesLauncher.getAttributes();
+  
   return (
     <div>
       <h3 className='mb-3'>Compra de pontos</h3>
-      <div>Restante: {attributesLauncher.getPoints()}</div>
+      <div role="status" aria-label='Pontos'>Restam {attributesLauncher.getPoints()} pontos</div>
       <div className="flex justify-evenly mb-3">
         {Object.entries(attributes).map(([key, value]) => {
           const attribute = key as Attribute;

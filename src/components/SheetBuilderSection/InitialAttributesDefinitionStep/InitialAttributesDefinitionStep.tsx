@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../common/Button/Button'
 import { useSheetBuilderFormContext } from '../SheetBuilderFormContext'
-import BuyingSystem from './AttributesLauncherPerPurchaseView'
+import AttributesLauncherPerPurchaseView from './AttributesLauncherPerPurchaseView'
 
 
 const InitialAttributesDefinitionStep: React.FC = () => {
@@ -10,7 +10,7 @@ const InitialAttributesDefinitionStep: React.FC = () => {
   return (
     <div className='mb-6'>
       <h2 className='mb-3'>1 - Atributos Iniciais</h2>
-      <BuyingSystem />
+      <AttributesLauncherPerPurchaseView  attributesLauncher={sheetBuilderForm.getAttributesLauncher()} />
       <Button onClick={() => sheetBuilderForm.confirmInitialAttributes()}>
         Confirmar
       </Button>
