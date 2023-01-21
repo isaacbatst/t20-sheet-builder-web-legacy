@@ -5,7 +5,9 @@ import { AttributesLauncherPerPurchaseProjectionDecorator } from "./AttributesLa
 export const useAttributesLauncherPerPurchaseProjection = (
   attributesLauncherPerPurchase: AttributesLauncherPerPurchaseInterface
 ) => {
-  const [projection, setProjection] = useState(attributesLauncherPerPurchase.getDTO())
+  const [projection, setProjection] = useState(
+    AttributesLauncherPerPurchaseProjectionDecorator.getProjection(attributesLauncherPerPurchase)
+  )
 
   return new AttributesLauncherPerPurchaseProjectionDecorator(
     attributesLauncherPerPurchase,

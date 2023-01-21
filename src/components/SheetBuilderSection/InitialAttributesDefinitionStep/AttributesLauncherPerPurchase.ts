@@ -1,17 +1,10 @@
 import { Attribute, Attributes } from "t20-sheet-builder";
 
-export type AttributesLauncherPerPurchaseDTO = {
-  points: number,
-  attributes: Attributes  
-}
-
 export type AttributesLauncherPerPurchaseInterface = {
   getPoints(): number
   getAttributes(): Attributes
-  getDTO(): AttributesLauncherPerPurchaseDTO
   sell(attribute: Attribute): void
   buy(attribute: Attribute): void
-  confirm(): void
 }
 
 export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurchaseInterface {
@@ -32,28 +25,19 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
 
   constructor(private attributes: Attributes = AttributesLauncherPerPurchase.defaultAttributes){}
 
-  confirm(): void {
-    if(this.points > 0) {
-      throw new Error('POINTS_LEFT')
-    }
-  }
-
   buy(attribute: Attribute): void {    
     const currentAttribute = this.attributes[attribute]
     if(this.points === 0) {
-      this.attributes[attribute] = currentAttribute;
-      return
+      throw new Error('ZERO_POINTS')
     }
     if(currentAttribute >= 4) {
-      this.attributes[attribute] = 4;
-      return 
+      throw new Error('ATTRIBUTE_MAX') 
     }
     const attributeResult = currentAttribute + 1;
     const totalResult = this.points - Math.abs(AttributesLauncherPerPurchase.price[currentAttribute] - AttributesLauncherPerPurchase.price[attributeResult])
     
     if(totalResult < 0) {
-      this.attributes[attribute] = currentAttribute
-      return
+      throw new Error('NOT_ENOUGH_POINTS')
     }
     this.points = totalResult
     this.attributes[attribute] = attributeResult;
@@ -77,12 +61,5 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
 
   getPoints() {
     return this.points
-  }
-
-  getDTO(): AttributesLauncherPerPurchaseDTO {
-    return {
-      attributes: this.getAttributes(),
-      points: this.getPoints()
-    }
   }
 }

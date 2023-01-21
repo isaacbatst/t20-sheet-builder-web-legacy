@@ -62,4 +62,44 @@ describe('AttributesLauncherPerPurchase', () => {
       launcher.sell('strength');
     }).toThrow('MINIMUM_ATTRIBUTE')
   })
+
+  it('should not buy with 0 points', () => {
+    const launcher = new AttributesLauncherPerPurchase();
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('charisma');
+    launcher.buy('charisma');
+    launcher.buy('intelligence');
+    expect(() => {
+      launcher.buy('strength');
+    }).toThrow('ZERO_POINTS')
+  })
+
+  it('should not buy above 4 points', () => {
+    const launcher = new AttributesLauncherPerPurchase();
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('strength');
+
+    expect(() => {
+      launcher.buy('strength');
+    }).toThrow('ATTRIBUTE_MAX')
+  })
+
+  it('should not buy attributes costing more than you have', () => {
+    const launcher = new AttributesLauncherPerPurchase();
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('strength');
+    launcher.buy('charisma');
+    launcher.buy('charisma');
+
+    expect(() => {
+      launcher.buy('charisma');
+    }).toThrow('NOT_ENOUGH_POINTS')
+  })
 })

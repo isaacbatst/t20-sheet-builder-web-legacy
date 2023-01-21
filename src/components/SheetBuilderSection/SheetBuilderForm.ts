@@ -29,7 +29,9 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
   confirmInitialAttributes(): void {
     try {
       this.error = undefined
-      this.attributesLauncher.confirm()
+      if(this.attributesLauncher.getPoints() > 0) {
+        throw new Error('POINTS_LEFT')
+      }
       this.sheetBuilderSteps.next()
     } catch(err){
       this.handleError(err)
