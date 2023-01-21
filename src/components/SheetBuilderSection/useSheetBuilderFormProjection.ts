@@ -15,7 +15,7 @@ export const useSheetBuilderFormProjection = (
     attributesLauncher,
     chooseRaceStep
   })
-  const [projection, setProjection] = useState(sheetBuilderForm.getDTO())
+  const [projection, setProjection] = useState(SheetBuilderFormProjectionDecorator.getProjection(sheetBuilderForm))
   
   return new SheetBuilderFormProjectionDecorator(sheetBuilderForm, setProjection)
 }

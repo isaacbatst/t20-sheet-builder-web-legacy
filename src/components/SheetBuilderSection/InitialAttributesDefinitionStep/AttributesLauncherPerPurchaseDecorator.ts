@@ -13,10 +13,6 @@ export class AttributesLauncherPerPurchaseDecorator implements AttributesLaunche
     return this.attributesLauncherPerPurchase.getDTO()
   }
   
-  setAttribute(attribute: keyof Attributes, value: number): void {
-    this.attributesLauncherPerPurchase.setAttribute(attribute, value)
-  }
-
   getAttributes(): Attributes {
     return this.attributesLauncherPerPurchase.getAttributes()
   }

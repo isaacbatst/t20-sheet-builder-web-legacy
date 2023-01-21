@@ -1,7 +1,6 @@
 import { ChooseRaceStepInterface } from "./ChooseRaceStep/ChooseRaceStep";
-import { RaceStepInterface } from "./ChooseRaceStep/RaceStep";
 import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
-import { SheetBuilderFormDTO, SheetBuilderFormInterface } from "./SheetBuilderForm";
+import { SheetBuilderFormInterface } from "./SheetBuilderForm";
 import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
 
 export class SheetBuilderFormDecorator implements SheetBuilderFormInterface {
@@ -25,10 +24,6 @@ export class SheetBuilderFormDecorator implements SheetBuilderFormInterface {
   }
   getSheetBuilderSteps(): SheetBuilderStepsInterface {
     return this.sheetBuilderForm.getSheetBuilderSteps()
-  }
-
-  getDTO(): SheetBuilderFormDTO {
-    return this.sheetBuilderForm.getDTO()
   }
   getError(): string | undefined {
     return this.sheetBuilderForm.getError()

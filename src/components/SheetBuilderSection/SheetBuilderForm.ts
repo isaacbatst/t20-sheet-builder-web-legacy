@@ -1,17 +1,8 @@
-import { RaceInterface, RaceName, RoleInterface, RoleName } from "t20-sheet-builder";
-import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
 import { ChooseRaceStepInterface } from "./ChooseRaceStep/ChooseRaceStep";
-import { RaceStepInterface } from "./ChooseRaceStep/RaceStep";
+import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
 import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
 
-export type SheetBuilderFormDTO = {
-  error?: string
-  race?: RaceName,
-  role?: RoleName
-}
-
 export type SheetBuilderFormInterface = {
-  getDTO(): SheetBuilderFormDTO
   getError(): string | undefined
   getAttributesLauncher(): AttributesLauncherPerPurchaseInterface
   getChooseRaceStep(): ChooseRaceStepInterface
@@ -22,8 +13,6 @@ export type SheetBuilderFormInterface = {
 }
 
 export class SheetBuilderForm implements SheetBuilderFormInterface {
-  private race?: RaceInterface;
-  private role?: RoleInterface;
   private error?: string;
   
   constructor(
@@ -65,14 +54,6 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
   }
   getSheetBuilderSteps(): SheetBuilderStepsInterface {
     return this.sheetBuilderSteps
-  }
-
-  getDTO(): SheetBuilderFormDTO {
-    return {
-      error: this.error,
-      race: this.race?.name,
-      role: this.role?.name
-    }
   }
 
   getError(): string | undefined {
