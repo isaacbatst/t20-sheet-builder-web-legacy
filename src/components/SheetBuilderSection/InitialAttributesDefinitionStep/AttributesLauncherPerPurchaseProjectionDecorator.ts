@@ -11,13 +11,13 @@ export class AttributesLauncherPerPurchaseProjectionDecorator extends Attributes
     super(attributesLauncherPerPurchase)
   }
   
-  increment(attribute: Attribute): void {    
-    super.increment(attribute)
+  buy(attribute: Attribute): void {    
+    super.buy(attribute)
     this.setProjection(this.getDTO())
   }
 
-  decrement(attribute: Attribute): void {
-    super.decrement(attribute)
+  sell(attribute: Attribute): void {
+    super.sell(attribute)
     this.setProjection(this.getDTO())
   }
 }

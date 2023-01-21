@@ -9,8 +9,8 @@ export type AttributesLauncherPerPurchaseInterface = {
   getPoints(): number
   getAttributes(): Attributes
   getDTO(): AttributesLauncherPerPurchaseDTO
-  decrement(attribute: Attribute): void
-  increment(attribute: Attribute): void
+  sell(attribute: Attribute): void
+  buy(attribute: Attribute): void
   confirm(): void
 }
 
@@ -24,7 +24,9 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
     [4]: 7
   }
 
-  static defaultAttributes = {strength: 0 , dexterity: 0, constitution: 0,  intelligence: 0 , wisdom: 0, charisma: 0  }
+  static get defaultAttributes() {
+    return {strength: 0 , dexterity: 0, constitution: 0,  intelligence: 0 , wisdom: 0, charisma: 0  }
+  } 
 
   private points = 10;
 
@@ -36,7 +38,7 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
     }
   }
 
-  increment(attribute: Attribute): void {    
+  buy(attribute: Attribute): void {    
     const currentAttribute = this.attributes[attribute]
     if(this.points === 0) {
       this.attributes[attribute] = currentAttribute;
@@ -57,11 +59,10 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
     this.attributes[attribute] = attributeResult;
   }
 
-  decrement(attribute: Attribute): void {
+  sell(attribute: Attribute): void {
     const currentAttribute = this.attributes[attribute]
     if(currentAttribute <= -1) {
-      this.attributes[attribute] = -1
-      return
+      throw new Error('MINIMUM_ATTRIBUTE')
     };
 
     const result = currentAttribute - 1;

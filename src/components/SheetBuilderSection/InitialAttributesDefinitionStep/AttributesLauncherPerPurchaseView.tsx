@@ -19,8 +19,8 @@ const AttributesLauncherPerPurchaseView: React.FC = () => {
               key={attribute} 
               attribute={attribute} 
               value={value} 
-              decrement={() => attributesLauncher.decrement(attribute)} 
-              increment={() => attributesLauncher.increment(attribute)} 
+              decrement={() => attributesLauncher.sell(attribute)} 
+              increment={() => attributesLauncher.buy(attribute)} 
             />
           )
         })}

@@ -21,11 +21,11 @@ export class AttributesLauncherPerPurchaseDecorator implements AttributesLaunche
     return this.attributesLauncherPerPurchase.getPoints()
   }
 
-  increment(attribute: Attribute): void {    
-    this.attributesLauncherPerPurchase.increment(attribute)
+  buy(attribute: Attribute): void {    
+    this.attributesLauncherPerPurchase.buy(attribute)
   }
 
-  decrement(attribute: Attribute): void {
-    this.attributesLauncherPerPurchase.decrement(attribute)
+  sell(attribute: Attribute): void {
+    this.attributesLauncherPerPurchase.sell(attribute)
   }
 }
