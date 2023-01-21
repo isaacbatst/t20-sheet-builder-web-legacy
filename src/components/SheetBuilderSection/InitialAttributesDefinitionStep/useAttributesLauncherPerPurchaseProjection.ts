@@ -1,16 +1,14 @@
-import { MutableRefObject, useState } from "react";
+import { useState } from "react";
 import { AttributesLauncherPerPurchaseInterface } from "./AttributesLauncherPerPurchase";
 import { AttributesLauncherPerPurchaseProjectionDecorator } from "./AttributesLauncherPerPurchaseProjectionDecorator";
 
 export const useAttributesLauncherPerPurchaseProjection = (
-  attributesLauncherRef: MutableRefObject<AttributesLauncherPerPurchaseInterface> 
+  attributesLauncherPerPurchase: AttributesLauncherPerPurchaseInterface
 ) => {
-  const [projection, setProjection] = useState(
-    AttributesLauncherPerPurchaseProjectionDecorator.getProjection(attributesLauncherRef.current)
-  )
+  const [projection, setProjection] = useState(AttributesLauncherPerPurchaseProjectionDecorator.getProjection(attributesLauncherPerPurchase))
 
   return new AttributesLauncherPerPurchaseProjectionDecorator(
-    attributesLauncherRef.current,
+    attributesLauncherPerPurchase,
     setProjection
   )
 }

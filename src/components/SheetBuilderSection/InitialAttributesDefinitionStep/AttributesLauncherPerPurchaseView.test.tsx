@@ -8,7 +8,7 @@ import { useAttributesLauncherPerPurchaseProjection } from "./useAttributesLaunc
 
 const AttributesLauncherPerPurchaseViewWrapperFake: React.FC = () => {
   const ref = useRef(new AttributesLauncherPerPurchase());
-  const attributesLauncher = useAttributesLauncherPerPurchaseProjection(ref)
+  const attributesLauncher = useAttributesLauncherPerPurchaseProjection(ref.current)
 
   return (
     <AttributesLauncherPerPurchaseView attributesLauncher={attributesLauncher} />
