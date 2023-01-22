@@ -1,17 +1,10 @@
 import { Attribute, Human, RaceName } from "t20-sheet-builder";
-import { HumanRaceStepAttributesSelectorDTO, HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelector";
-import { HumanRaceStepVersatileDTO, HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile/HumanRaceStepVersatile";
-import { RaceStepDTO, RaceStepInterface } from "../RaceStep";
+import { RaceStepInterface } from "../RaceStep";
+import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelector";
+import { HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile/HumanRaceStepVersatile";
 
 export type HumanRaceStepInterface = RaceStepInterface & {
-  getSelector(): HumanRaceStepAttributesSelectorInterface,
-  getVersatile(): HumanRaceStepVersatileInterface
-  getDTO(): HumanRaceStepDTO
-}
-
-export type HumanRaceStepDTO = RaceStepDTO & {
-  selector: HumanRaceStepAttributesSelectorDTO,
-  versatile: HumanRaceStepVersatileDTO
+  build(): Human
 }
 
 export class HumanRaceStep implements HumanRaceStepInterface {
@@ -21,25 +14,9 @@ export class HumanRaceStep implements HumanRaceStepInterface {
     readonly selector: HumanRaceStepAttributesSelectorInterface,
     readonly versatile: HumanRaceStepVersatileInterface
   ){}
-  getDTO(): HumanRaceStepDTO {
-    return {
-      selector: this.selector.getDTO(),
-      versatile: this.versatile.getDTO(),
-      raceName: this.raceName
-    }
-  }
-
-  getSelector(): HumanRaceStepAttributesSelectorInterface {
-    return this.selector
-  }
-  getVersatile(): HumanRaceStepVersatileInterface {
-    return this.versatile
-  }
-
   build(): Human {
-    const selectedAttributes = Object.entries(this.selector.getAttributes())
-      .filter(([key, checked]) => checked)
-      .map(([attribute]) => attribute as Attribute)
+    const selectedAttributes = this.selector.getSelectedAttributes()
+    if(selectedAttributes.length !== 3) throw new Error('INVALID_SELECTED_ATTRIBUTES')
     const human = new Human(selectedAttributes)
     const firstChoice = this.versatile.getFirstChoice()
     const secondChoice = this.versatile.getSecondChoice()

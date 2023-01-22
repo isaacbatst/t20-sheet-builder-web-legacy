@@ -3,6 +3,7 @@ import { Attribute, Attributes } from "t20-sheet-builder";
 export type HumanRaceStepAttributesSelectorInterface = {
   toggleAttribute(attribute: Attribute): void;
   getAttributes(): Record<Attribute, boolean>;
+  getSelectedAttributes(): Attribute[]
   getPreview(attribute: Attribute, initialAttributes: Attributes): number
 }
 
@@ -24,6 +25,13 @@ export class HumanRaceStepAttributesSelector implements HumanRaceStepAttributesS
     }
     this.attributes[attribute] = nextIsToggled
   }
+
+  getSelectedAttributes(): Attribute[] {
+    return Object.entries(this.attributes)
+    .filter(([_key, checked]) => checked)
+    .map(([key]) => key as Attribute)
+  }
+
 
   getAttributes(): Record<keyof Attributes, boolean> {
     return this.attributes

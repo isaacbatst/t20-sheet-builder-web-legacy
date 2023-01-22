@@ -9,6 +9,10 @@ export class HumanRaceStepAttributesSelectorDecorator implements HumanRaceStepAt
     return this.selector.getAttributes()
   }
 
+  getSelectedAttributes(): (keyof Attributes)[] {
+    return this.selector.getSelectedAttributes()
+  }
+
   toggleAttribute(attribute: Attribute) {
     this.selector.toggleAttribute(attribute)
   }
