@@ -3,6 +3,16 @@ import { describe } from "vitest";
 import { HumanRaceStepAttributesSelector } from "./HumanRaceStepAttributesSelector";
 
 describe('HumanRaceStepAttributesSelector', () => {
+  it('should init all attributes unchecked', () => {
+    const selector = new HumanRaceStepAttributesSelector()
+    expect(selector.getAttributes().strength).toBe(false)
+    expect(selector.getAttributes().dexterity).toBe(false)
+    expect(selector.getAttributes().constitution).toBe(false)
+    expect(selector.getAttributes().intelligence).toBe(false)
+    expect(selector.getAttributes().wisdom).toBe(false)
+    expect(selector.getAttributes().charisma).toBe(false)
+  })
+
   it('should check strength', () => {
     const selector = new HumanRaceStepAttributesSelector()
     selector.toggleAttribute('strength');

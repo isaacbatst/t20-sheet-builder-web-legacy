@@ -1,16 +1,15 @@
 import React from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
 import Checkbox from '../../../common/Checkbox/Checkbox';
-import { useSheetBuilderFormContext } from '../../SheetBuilderFormContext';
+import { AttributesLauncherPerPurchaseInterface } from '../../InitialAttributesDefinitionStep/AttributesLauncherPerPurchase';
 import { HumanRaceStepAttributesSelectorInterface } from './HumanRaceStepAttributesSelector';
 
 type Props = {
-  selector: HumanRaceStepAttributesSelectorInterface
+  selector: HumanRaceStepAttributesSelectorInterface,
+  attributesLauncher: AttributesLauncherPerPurchaseInterface
 }
 
-const HumanRaceStepAttributesSelectorView: React.FC<Props> = ({selector}) => {
-  const {sheetBuilderForm} = useSheetBuilderFormContext()
-  const attributesLauncher = sheetBuilderForm.getAttributesLauncher()
+const HumanRaceStepAttributesSelectorView: React.FC<Props> = ({selector, attributesLauncher}) => {
   const initialAttributes = attributesLauncher.getAttributes()
   const selectorAttributes = selector.getAttributes()
   return (
@@ -19,13 +18,15 @@ const HumanRaceStepAttributesSelectorView: React.FC<Props> = ({selector}) => {
     <div className='flex mb-3'>
       {Object.entries(selectorAttributes).map(([key, value]) => {
         const attribute = key as Attribute;
+        const attributeTranslation = Translator.getAttributeTranslation(attribute);
+        const attributePreview = selector.getPreview(attribute, initialAttributes) 
         return (
           <Checkbox 
             key={key} handleChange={() => selector.toggleAttribute(attribute)}               
-            checked={value} 
+            checked={value}
+            id={`${attribute}-human-checkbox`} 
           > 
-            {Translator.getAttributeTranslation(attribute)} 
-            ({selectorAttributes[attribute] ? initialAttributes[attribute] + 1 : initialAttributes[attribute]})
+            {attributeTranslation} ({attributePreview})
           </Checkbox>
         )
       })}

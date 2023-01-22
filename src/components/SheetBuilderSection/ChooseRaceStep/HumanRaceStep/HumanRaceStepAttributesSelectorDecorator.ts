@@ -12,4 +12,8 @@ export class HumanRaceStepAttributesSelectorDecorator implements HumanRaceStepAt
   toggleAttribute(attribute: Attribute) {
     this.selector.toggleAttribute(attribute)
   }
+
+  getPreview(attribute: keyof Attributes, initialAttributes: Attributes): number {
+    return this.selector.getPreview(attribute, initialAttributes)
+  }
 }

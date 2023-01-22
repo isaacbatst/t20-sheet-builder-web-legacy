@@ -2,7 +2,8 @@ import { Attribute, Attributes } from "t20-sheet-builder";
 
 export type HumanRaceStepAttributesSelectorInterface = {
   toggleAttribute(attribute: Attribute): void;
-  getAttributes(): Record<Attribute, boolean>
+  getAttributes(): Record<Attribute, boolean>;
+  getPreview(attribute: Attribute, initialAttributes: Attributes): number
 }
 
 export class HumanRaceStepAttributesSelector implements HumanRaceStepAttributesSelectorInterface {
