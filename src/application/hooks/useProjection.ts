@@ -1,9 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react"
 
-type MakeSetProjectionDecorator<Projection, ProjectionDecorator> = (setProjection: Dispatch<SetStateAction<Projection>>) => ProjectionDecorator
-
 export const useProjection = <Projection, ProjectionDecorator>(
-    initialValue: Projection, makeProjectionDecorator: MakeSetProjectionDecorator<Projection, ProjectionDecorator>
+    initialValue: Projection, makeProjectionDecorator: (setProjection: Dispatch<SetStateAction<Projection>>) => ProjectionDecorator
   ) => {
   const [projection, setProjection] = useState(initialValue);
   
