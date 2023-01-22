@@ -1,7 +1,7 @@
 import { Human, RaceName } from "t20-sheet-builder";
 import { HumanRaceStep, HumanRaceStepDTO, HumanRaceStepInterface } from "./HumanRaceStep";
 import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelector";
-import { HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile";
+import { HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile/HumanRaceStepVersatile";
 
 export class HumanRaceStepDecorator implements HumanRaceStepInterface {
   readonly raceName: RaceName = this.humanRaceStep.raceName

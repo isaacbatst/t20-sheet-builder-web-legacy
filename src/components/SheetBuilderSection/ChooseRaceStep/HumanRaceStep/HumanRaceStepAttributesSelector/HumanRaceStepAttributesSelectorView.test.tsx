@@ -4,8 +4,8 @@ import { describe, expect } from "vitest";
 import { useAttributesLauncherPerPurchaseProjection } from "../../../InitialAttributesDefinitionStep/useAttributesLauncherPerPurchaseProjection";
 import { useAttributesLauncherPerPurchaseRef } from "../../../InitialAttributesDefinitionStep/useAttributesLauncherPerPurchaseRef";
 import HumanRaceStepAttributesSelectorView from "./HumanRaceStepAttributesSelectorView";
-import { useHumanRaceStepAttributesSelectorProjection } from "../useHumanRaceStepAttributesSelectorProjection";
-import { useHumanRaceStepAttributesSelectorRef } from "../useHumanRaceStepAttributesSelectorRef";
+import { useHumanRaceStepAttributesSelectorProjection } from "./useHumanRaceStepAttributesSelectorProjection";
+import { useHumanRaceStepAttributesSelectorRef } from "./useHumanRaceStepAttributesSelectorRef";
 
 const renderHumanRaceStepAttributesSelectorView = () => {
   const HumanRaceStepAttributesSelectorViewWrapperFake = () => {

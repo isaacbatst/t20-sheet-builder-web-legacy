@@ -2,8 +2,8 @@ import { HumanRaceStep, HumanRaceStepDTO } from "./HumanRaceStep";
 import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelector";
 import { HumanRaceStepAttributesSelectorProjectionDecorator } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelectorProjectionDecorator";
 import { HumanRaceStepDecorator } from "./HumanRaceStepDecorator";
-import { HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile";
-import { HumanRaceStepVersatileProjectionDecorator } from "./HumanRaceStepVersatileProjectionDecorator";
+import { HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile/HumanRaceStepVersatile";
+import { HumanRaceStepVersatileProjectionDecorator } from "./HumanRaceStepVersatile/HumanRaceStepVersatileProjectionDecorator";
 
 export class HumanRaceStepProjectionDecorator extends HumanRaceStepDecorator {
   constructor(humanRaceStep: HumanRaceStep, private setProjection: (projection: HumanRaceStepDTO) => void){

@@ -3,7 +3,7 @@ import { DwarfRaceStep } from "./DwarfRaceStep/DwarfRaceStep";
 import { HumanRaceStep } from "./HumanRaceStep/HumanRaceStep";
 import { HumanRaceStepAttributesSelector } from "./HumanRaceStep/HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelector";
 import { HumanRaceStepProjectionDecorator } from "./HumanRaceStep/HumanRaceStepDecoratorProjection";
-import { HumanRaceStepVersatile } from "./HumanRaceStep/HumanRaceStepVersatile";
+import { HumanRaceStepVersatile } from "./HumanRaceStep/HumanRaceStepVersatile/HumanRaceStepVersatile";
 import { RaceStepDTO, RaceStepInterface } from "./RaceStep";
 import { RaceStepFactoryInterface } from "./RaceStepFactory";
 

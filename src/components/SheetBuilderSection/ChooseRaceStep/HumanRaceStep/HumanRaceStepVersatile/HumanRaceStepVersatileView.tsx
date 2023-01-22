@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { GeneralPowerFactory, GeneralPowerName, SkillName, Translator, VersatileChoicePower, VersatileChoiceSkill, VersatileChoiceType } from 't20-sheet-builder'
-import { Option } from '../../../../domain/entities/Option'
+import { Option } from '../../../../../domain/entities/Option'
 import Select from 'react-select';
 import { HumanRaceStepVersatileInterface } from './HumanRaceStepVersatile';
 

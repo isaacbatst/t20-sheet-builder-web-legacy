@@ -1,6 +1,6 @@
 import HumanRaceStepAttributesSelectorView from './HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelectorView';
 import { HumanRaceStepProjectionDecorator } from './HumanRaceStepDecoratorProjection';
-import HumanRaceStepVersatileView from './HumanRaceStepVersatileView';
+import HumanRaceStepVersatileView from './HumanRaceStepVersatile/HumanRaceStepVersatileView';
 
 type Props = {
   humanRaceStep: HumanRaceStepProjectionDecorator
