@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import { RaceName, Translator } from 't20-sheet-builder';
-import { Option } from '../../../domain/entities/Option';
+import { Option } from '../../../../domain/entities/Option';
 import Button from '../../common/Button/Button';
 import { useSheetBuilderFormContext } from '../SheetBuilderFormContext';
 import { RaceStepComponentHuman } from './RaceStepComponentHuman';

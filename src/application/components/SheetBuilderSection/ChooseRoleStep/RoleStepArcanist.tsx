@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ArcanistPath } from 't20-sheet-builder/build/domain/entities/Role/Arcanist/ArcanistPath/ArcanistPath'
 import { useImmer } from 'use-immer'
-import { RoleFactoryArcanist } from '../../../domain/entities/RoleFactoryArcanist'
+import { RoleFactoryArcanist } from '../../../../domain/entities/RoleFactoryArcanist'
 import RoleStepArcanistChoosePath from './RoleStepArcanistChoosePath'
 import RoleStepArcanistChooseSpells from './RoleStepArcanistChooseSpells'
 import { RoleStepArcanistChooseSpellsSelector } from './RoleStepArcanistChooseSpellsSelector'

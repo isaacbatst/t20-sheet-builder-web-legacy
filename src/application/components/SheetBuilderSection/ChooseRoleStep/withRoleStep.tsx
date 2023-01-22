@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from "react";
 import { SelectSkillGroup, RoleInterface, RoleName, SkillName, Translator } from "t20-sheet-builder";
 import { useImmer } from "use-immer";
-import { RoleFactory } from "../../../domain/entities/RoleFactory";
-import { ImmerableRoleSkillSelectors } from "../../../infra/immerable/ImmerableRoleSkillSelectors";
+import { RoleFactory } from "../../../../domain/entities/RoleFactory";
+import { ImmerableRoleSkillSelectors } from "../../../../infra/immerable/ImmerableRoleSkillSelectors";
 import Button from "../../common/Button/Button";
 import { useSheetBuilderFormContext } from "../SheetBuilderFormContext";
 import RoleSkillSelection from "./RoleSkillSelection";

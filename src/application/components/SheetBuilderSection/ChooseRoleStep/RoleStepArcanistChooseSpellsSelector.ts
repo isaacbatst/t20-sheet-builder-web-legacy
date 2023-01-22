@@ -1,5 +1,5 @@
 import { SpellCircle, Spells, SpellStatic } from "t20-sheet-builder";
-import { CheckboxSelector } from "../../../domain/entities/CheckboxSelector";
+import { CheckboxSelector } from "../../../../domain/entities/CheckboxSelector";
 
 export class RoleStepArcanistChooseSpellsSelector extends CheckboxSelector<SpellStatic> {
   constructor(){

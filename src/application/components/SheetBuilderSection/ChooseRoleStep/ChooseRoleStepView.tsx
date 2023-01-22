@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Arcanist, SelectSkillGroup, RoleName, Translator, Warrior } from 't20-sheet-builder';
-import { Option } from '../../../domain/entities/Option';
+import { Option } from '../../../../domain/entities/Option';
 import RoleStepArcanist from './RoleStepArcanist';
 import RoleStepWarrior from './RoleStepWarrior';
 import { RoleStepWrapperProps } from './withRoleStep';

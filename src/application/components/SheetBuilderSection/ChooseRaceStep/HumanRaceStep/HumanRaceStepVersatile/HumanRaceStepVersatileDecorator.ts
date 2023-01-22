@@ -1,5 +1,6 @@
 import { VersatileChoice, VersatileChoiceSkill } from "t20-sheet-builder";
-import { HumanRaceStepVersatileDTO, HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile";
+import { CommonErrors } from "../../../../../../domain/entities/CommonErrors";
+import { HumanRaceStepVersatileErrors, HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile";
 
 export abstract class HumanRaceStepVersatileDecorator implements HumanRaceStepVersatileInterface {
   constructor(protected readonly versatile: HumanRaceStepVersatileInterface) {}
@@ -9,8 +10,8 @@ export abstract class HumanRaceStepVersatileDecorator implements HumanRaceStepVe
   getSecondChoice(): VersatileChoice | undefined {
     return this.versatile.getSecondChoice()
   }
-  getDTO(): HumanRaceStepVersatileDTO {
-    return this.versatile.getDTO()
+  getError(): HumanRaceStepVersatileErrors | CommonErrors | undefined {
+    return this.versatile.getError()
   }
   selectFirstChoice(firstChoice: VersatileChoiceSkill): void {
     this.versatile.selectFirstChoice(firstChoice)
@@ -18,5 +19,4 @@ export abstract class HumanRaceStepVersatileDecorator implements HumanRaceStepVe
   selectSecondChoice(secondChoice: VersatileChoice): void {
     this.versatile.selectSecondChoice(secondChoice)
   }
-
 }
