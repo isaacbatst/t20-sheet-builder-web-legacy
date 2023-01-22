@@ -1,5 +1,5 @@
 import { Attribute, Attributes } from "t20-sheet-builder";
-import { HumanRaceStepAttributesSelectorDTO, HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector";
+import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector";
 
 export class HumanRaceStepAttributesSelectorDecorator implements HumanRaceStepAttributesSelectorInterface {
   constructor(
@@ -11,9 +11,5 @@ export class HumanRaceStepAttributesSelectorDecorator implements HumanRaceStepAt
 
   toggleAttribute(attribute: Attribute) {
     this.selector.toggleAttribute(attribute)
-  }
-
-  getDTO(): HumanRaceStepAttributesSelectorDTO {
-    return this.selector.getDTO()
   }
 }

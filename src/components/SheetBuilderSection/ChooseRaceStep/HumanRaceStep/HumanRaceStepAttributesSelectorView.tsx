@@ -8,16 +8,16 @@ type Props = {
   selector: HumanRaceStepAttributesSelectorInterface
 }
 
-const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
+const HumanRaceStepAttributesSelectorView: React.FC<Props> = ({selector}) => {
   const {sheetBuilderForm} = useSheetBuilderFormContext()
   const attributesLauncher = sheetBuilderForm.getAttributesLauncher()
-  const attributes = attributesLauncher.getAttributes()
-  
+  const initialAttributes = attributesLauncher.getAttributes()
+  const selectorAttributes = selector.getAttributes()
   return (
     <div>
     <h3 className='mb-2'>Escolha 3 atributos para receber +1:</h3>
     <div className='flex mb-3'>
-      {Object.entries(selector.getDTO().attributes).map(([key, value]) => {
+      {Object.entries(selectorAttributes).map(([key, value]) => {
         const attribute = key as Attribute;
         return (
           <Checkbox 
@@ -25,7 +25,7 @@ const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
             checked={value} 
           > 
             {Translator.getAttributeTranslation(attribute)} 
-            ({selector.getDTO().attributes[attribute] ? attributes[attribute] + 1 : attributes[attribute]})
+            ({selectorAttributes[attribute] ? initialAttributes[attribute] + 1 : initialAttributes[attribute]})
           </Checkbox>
         )
       })}
@@ -34,4 +34,4 @@ const HumanRaceStepAttributesSelection: React.FC<Props> = ({selector}) => {
   )
 }
 
-export default HumanRaceStepAttributesSelection
+export default HumanRaceStepAttributesSelectorView

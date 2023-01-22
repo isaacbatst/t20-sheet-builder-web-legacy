@@ -1,8 +1,17 @@
 import { Attribute } from "t20-sheet-builder";
-import { HumanRaceStepAttributesSelectorDTO, HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector";
+import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector";
 import { HumanRaceStepAttributesSelectorDecorator } from "./HumanRaceStepAttributesSelectorDecorator";
 
+export type HumanRaceStepAttributesSelectorDTO = {
+  attributes: Record<Attribute, boolean>
+}
 export class HumanRaceStepAttributesSelectorProjectionDecorator extends HumanRaceStepAttributesSelectorDecorator {
+  static getProjection(selector: HumanRaceStepAttributesSelectorInterface): HumanRaceStepAttributesSelectorDTO {
+    return {
+      attributes: selector.getAttributes()
+    }
+  }
+  
   constructor(
     selector: HumanRaceStepAttributesSelectorInterface,
     readonly setProjection: (projection: HumanRaceStepAttributesSelectorDTO) => void
@@ -12,6 +21,10 @@ export class HumanRaceStepAttributesSelectorProjectionDecorator extends HumanRac
 
   toggleAttribute(attribute: Attribute) {
     this.selector.toggleAttribute(attribute)
-    this.setProjection(this.selector.getDTO())
+    this.setProjection(this.getProjection())
+  }
+
+  private getProjection() {
+    return HumanRaceStepAttributesSelectorProjectionDecorator.getProjection(this.selector)
   }
 }

@@ -1,4 +1,4 @@
-import HumanRaceStepAttributesSelection from './HumanRaceStepAttributesSelection';
+import HumanRaceStepAttributesSelectorView from './HumanRaceStepAttributesSelectorView';
 import { HumanRaceStepProjectionDecorator } from './HumanRaceStepDecoratorProjection';
 import HumanRaceStepVersatileView from './HumanRaceStepVersatileView';
 
@@ -9,7 +9,7 @@ type Props = {
 const HumanRaceStepView: React.FC<Props> = ({ humanRaceStep }) => {
   return (
     <div>
-      <HumanRaceStepAttributesSelection selector={humanRaceStep.getSelector()}/>
+      <HumanRaceStepAttributesSelectorView selector={humanRaceStep.getSelector()}/>
       <HumanRaceStepVersatileView versatile={humanRaceStep.getVersatile()} />
     </div>
   )

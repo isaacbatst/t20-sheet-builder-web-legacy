@@ -2,16 +2,11 @@ import { Attribute, Attributes } from "t20-sheet-builder";
 
 export type HumanRaceStepAttributesSelectorInterface = {
   toggleAttribute(attribute: Attribute): void;
-  getDTO(): HumanRaceStepAttributesSelectorDTO
   getAttributes(): Record<Attribute, boolean>
 }
 
-export type HumanRaceStepAttributesSelectorDTO = {
-  attributes: Record<Attribute, boolean>
-}
-
 export class HumanRaceStepAttributesSelector implements HumanRaceStepAttributesSelectorInterface {
-  attributes: Record<Attribute, boolean> = {
+  private attributes: Record<Attribute, boolean> = {
     strength: false,
     dexterity: false,
     constitution: false,
@@ -22,11 +17,11 @@ export class HumanRaceStepAttributesSelector implements HumanRaceStepAttributesS
 
   toggleAttribute(attribute: Attribute) {
     const checkedAttributes = Object.values(this.attributes).reduce((acc, curr) => curr ? acc + 1 : acc, 0);
-    const toggled = !this.attributes[attribute]
-    if(toggled && checkedAttributes >= 3) {
-      return
+    const nextIsToggled = !this.attributes[attribute]
+    if(nextIsToggled && checkedAttributes >= 3) {
+      throw new Error('MAX_ATTRIBUTES_CHECKED')
     }
-    this.attributes[attribute] = toggled
+    this.attributes[attribute] = nextIsToggled
   }
 
   getAttributes(): Record<keyof Attributes, boolean> {
@@ -35,17 +30,5 @@ export class HumanRaceStepAttributesSelector implements HumanRaceStepAttributesS
 
   getPreview(attribute: Attribute, initialAttributes: Attributes) {
     return this.attributes[attribute] ? initialAttributes[attribute] + 1 : initialAttributes[attribute]
-  }
-
-  getSelectedAttributes(): Attribute[] {
-    return Object.entries(this.attributes)
-    .filter(([key, checked]) => checked)
-    .map(([key]) => key as Attribute)
-  }
-
-  getDTO(): HumanRaceStepAttributesSelectorDTO {
-    return {
-      attributes: this.attributes
-    }
   }
 }
