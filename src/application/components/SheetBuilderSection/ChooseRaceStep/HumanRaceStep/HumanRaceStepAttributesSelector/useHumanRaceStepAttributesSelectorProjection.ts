@@ -1,4 +1,4 @@
-import { MutableRefObject, useState } from "react"
+import { MutableRefObject } from "react"
 import { useProjection } from "../../../../../hooks/useProjection"
 import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector"
 import { HumanRaceStepAttributesSelectorProjectionDecorator } from "./HumanRaceStepAttributesSelectorProjectionDecorator"
