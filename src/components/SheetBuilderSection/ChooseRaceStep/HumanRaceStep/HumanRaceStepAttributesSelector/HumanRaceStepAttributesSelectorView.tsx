@@ -1,7 +1,7 @@
 import React from 'react';
 import { Attribute, Translator } from 't20-sheet-builder';
-import Checkbox from '../../../common/Checkbox/Checkbox';
-import { AttributesLauncherPerPurchaseInterface } from '../../InitialAttributesDefinitionStep/AttributesLauncherPerPurchase';
+import Checkbox from '../../../../common/Checkbox/Checkbox';
+import { AttributesLauncherPerPurchaseInterface } from '../../../InitialAttributesDefinitionStep/AttributesLauncherPerPurchase';
 import { HumanRaceStepAttributesSelectorInterface } from './HumanRaceStepAttributesSelector';
 
 type Props = {

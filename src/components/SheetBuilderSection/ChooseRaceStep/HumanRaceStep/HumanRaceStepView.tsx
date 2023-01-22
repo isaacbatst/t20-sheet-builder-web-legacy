@@ -1,4 +1,4 @@
-import HumanRaceStepAttributesSelectorView from './HumanRaceStepAttributesSelectorView';
+import HumanRaceStepAttributesSelectorView from './HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelectorView';
 import { HumanRaceStepProjectionDecorator } from './HumanRaceStepDecoratorProjection';
 import HumanRaceStepVersatileView from './HumanRaceStepVersatileView';
 

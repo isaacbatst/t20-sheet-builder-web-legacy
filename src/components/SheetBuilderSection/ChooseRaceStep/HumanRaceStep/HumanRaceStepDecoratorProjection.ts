@@ -1,6 +1,6 @@
 import { HumanRaceStep, HumanRaceStepDTO } from "./HumanRaceStep";
-import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector";
-import { HumanRaceStepAttributesSelectorProjectionDecorator } from "./HumanRaceStepAttributesSelectorProjectionDecorator";
+import { HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelector";
+import { HumanRaceStepAttributesSelectorProjectionDecorator } from "./HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelectorProjectionDecorator";
 import { HumanRaceStepDecorator } from "./HumanRaceStepDecorator";
 import { HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile";
 import { HumanRaceStepVersatileProjectionDecorator } from "./HumanRaceStepVersatileProjectionDecorator";
