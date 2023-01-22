@@ -1,7 +1,7 @@
 import { Attribute, Human, RaceName } from "t20-sheet-builder";
 import { HumanRaceStepAttributesSelectorDTO, HumanRaceStepAttributesSelectorInterface } from "./HumanRaceStepAttributesSelector";
 import { HumanRaceStepVersatileDTO, HumanRaceStepVersatileInterface } from "./HumanRaceStepVersatile";
-import { RaceStepDTO, RaceStepInterface } from "./RaceStep";
+import { RaceStepDTO, RaceStepInterface } from "../RaceStep";
 
 export type HumanRaceStepInterface = RaceStepInterface & {
   getSelector(): HumanRaceStepAttributesSelectorInterface,

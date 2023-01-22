@@ -1,8 +1,8 @@
 import { RaceName } from "t20-sheet-builder";
-import { DwarfRaceStep } from "./DwarfRaceStep";
-import { HumanRaceStep } from "./HumanRaceStep";
-import { HumanRaceStepAttributesSelector } from "./HumanRaceStepAttributesSelector";
-import { HumanRaceStepVersatile } from "./HumanRaceStepVersatile";
+import { DwarfRaceStep } from "./DwarfRaceStep/DwarfRaceStep";
+import { HumanRaceStep } from "./HumanRaceStep/HumanRaceStep";
+import { HumanRaceStepAttributesSelector } from "./HumanRaceStep/HumanRaceStepAttributesSelector";
+import { HumanRaceStepVersatile } from "./HumanRaceStep/HumanRaceStepVersatile";
 import { RaceStepInterface } from "./RaceStep";
 
 export type RaceStepFactoryInterface = {

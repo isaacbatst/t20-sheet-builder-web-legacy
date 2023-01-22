@@ -1,5 +1,5 @@
-import { HumanRaceStepProjectionDecorator } from "./HumanRaceStepDecoratorProjection"
-import HumanRaceStepView from "./HumanRaceStepView"
+import { HumanRaceStepProjectionDecorator } from "./HumanRaceStep/HumanRaceStepDecoratorProjection"
+import HumanRaceStepView from "./HumanRaceStep/HumanRaceStepView"
 import { RaceStepInterface } from "./RaceStep"
 import { RaceStepComponent } from "./RaceStepComponent"
 
