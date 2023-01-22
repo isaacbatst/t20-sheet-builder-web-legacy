@@ -23,18 +23,13 @@ export class SheetBuilderFormProjectionDecorator extends SheetBuilderFormDecorat
     super(sheetBuilderForm);
   }
 
-  confirmInitialAttributes(): void {
-    super.confirmInitialAttributes();
-    this.setProjection(this.getProjection())
-  }
-
   previous(): void {
     super.previous()
     this.setProjection(this.getProjection())
   }
 
-  confirmRace(): void {
-    super.confirmRace();
+  confirmStep(validateStep: () => void): void {
+    super.confirmStep(validateStep);
     this.setProjection(this.getProjection())
   }
 

@@ -1,19 +1,16 @@
 import React from 'react'
-import Button from '../../common/Button/Button'
-import { useSheetBuilderFormContext } from '../SheetBuilderFormContext'
+import { AttributesLauncherPerPurchaseInterface } from './AttributesLauncherPerPurchase'
 import AttributesLauncherPerPurchaseView from './AttributesLauncherPerPurchaseView'
 
+type Props = {
+  attributesLauncherPerPurchase: AttributesLauncherPerPurchaseInterface
+}
 
-const InitialAttributesDefinitionStep: React.FC = () => {
-  const { sheetBuilderForm } = useSheetBuilderFormContext();
-
+const InitialAttributesDefinitionStep: React.FC<Props> = ({ attributesLauncherPerPurchase }) => {
   return (
     <div className='mb-6'>
       <h2 className='mb-3'>1 - Atributos Iniciais</h2>
-      <AttributesLauncherPerPurchaseView  attributesLauncher={sheetBuilderForm.getAttributesLauncher()} />
-      <Button onClick={() => sheetBuilderForm.confirmInitialAttributes()}>
-        Confirmar
-      </Button>
+      <AttributesLauncherPerPurchaseView attributesLauncher={attributesLauncherPerPurchase} />
     </div>
   )
 }

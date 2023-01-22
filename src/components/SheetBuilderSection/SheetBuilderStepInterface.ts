@@ -2,5 +2,6 @@ export type SheetBuilderStepType = 'initialAttributesDefinition' | 'chooseRace' 
 
 export type SheetBuilderStepInterface = {
   type: SheetBuilderStepType,
-  getComponent(): JSX.Element
+  getComponent(): JSX.Element;
+  validate(): void
 }

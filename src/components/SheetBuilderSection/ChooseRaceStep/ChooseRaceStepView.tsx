@@ -29,12 +29,7 @@ const ChooseRaceStepView: React.FC = () => {
         />
       </div>
       {raceStep && raceComponent.render(raceStep)}
-      <Button disabled={!raceStep} onClick={() => {
-        sheetBuilderForm.confirmRace()
-      }}>
-        Confirmar Raça
-      </Button>
-  </div>
+    </div>
   )
 }
 

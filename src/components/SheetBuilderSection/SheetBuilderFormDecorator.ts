@@ -1,20 +1,17 @@
 import { ChooseRaceStepInterface } from "./ChooseRaceStep/ChooseRaceStep";
 import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
 import { SheetBuilderFormInterface } from "./SheetBuilderForm";
-import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
+import { SheetBuilderSliderInterface } from "./SheetBuilderSlider";
 
 export class SheetBuilderFormDecorator implements SheetBuilderFormInterface {
   constructor(
     protected sheetBuilderForm: SheetBuilderFormInterface
   ){}
-  confirmInitialAttributes(): void {
-    this.sheetBuilderForm.confirmInitialAttributes()
+  confirmStep(validateStep: () => void): void {
+    this.sheetBuilderForm.confirmStep(validateStep)
   }
   previous(): void {
     this.sheetBuilderForm.previous()
-  }
-  confirmRace(): void {
-    this.sheetBuilderForm.confirmRace()
   }
   getAttributesLauncher(): AttributesLauncherPerPurchaseInterface {
     return this.sheetBuilderForm.getAttributesLauncher()
@@ -22,7 +19,7 @@ export class SheetBuilderFormDecorator implements SheetBuilderFormInterface {
   getChooseRaceStep(): ChooseRaceStepInterface {
     return this.sheetBuilderForm.getChooseRaceStep()
   }
-  getSheetBuilderSteps(): SheetBuilderStepsInterface {
+  getSheetBuilderSteps(): SheetBuilderSliderInterface {
     return this.sheetBuilderForm.getSheetBuilderSteps()
   }
   getError(): string | undefined {

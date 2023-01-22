@@ -1,14 +1,13 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useRef } from "react";
 import { describe } from "vitest";
-import { AttributesLauncherPerPurchase } from "./AttributesLauncherPerPurchase";
 import AttributesLauncherPerPurchaseView from "./AttributesLauncherPerPurchaseView";
 import { useAttributesLauncherPerPurchaseProjection } from "./useAttributesLauncherPerPurchaseProjection";
+import { useAttributesLauncherPerPurchaseRef } from './useAttributesLauncherPerPurchaseRef';
 
 const AttributesLauncherPerPurchaseViewWrapperFake: React.FC = () => {
-  const ref = useRef(new AttributesLauncherPerPurchase());
-  const attributesLauncher = useAttributesLauncherPerPurchaseProjection(ref.current)
+  const ref = useAttributesLauncherPerPurchaseRef();
+  const attributesLauncher = useAttributesLauncherPerPurchaseProjection(ref)
 
   return (
     <AttributesLauncherPerPurchaseView attributesLauncher={attributesLauncher} />

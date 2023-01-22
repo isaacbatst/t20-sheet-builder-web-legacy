@@ -1,14 +1,13 @@
 import { ChooseRaceStepInterface } from "./ChooseRaceStep/ChooseRaceStep";
 import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
-import { SheetBuilderStepsInterface } from "./SheetBuilderSteps";
+import { SheetBuilderSliderInterface } from "./SheetBuilderSlider";
 
 export type SheetBuilderFormInterface = {
   getError(): string | undefined
   getAttributesLauncher(): AttributesLauncherPerPurchaseInterface
   getChooseRaceStep(): ChooseRaceStepInterface
-  getSheetBuilderSteps(): SheetBuilderStepsInterface
-  confirmRace(): void
-  confirmInitialAttributes(): void
+  getSheetBuilderSteps(): SheetBuilderSliderInterface
+  confirmStep(validateStep: () => void): void
   previous(): void
 }
 
@@ -16,34 +15,22 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
   private error?: string;
   
   constructor(
-    private sheetBuilderSteps: SheetBuilderStepsInterface,
+    private slider: SheetBuilderSliderInterface,
     private attributesLauncher: AttributesLauncherPerPurchaseInterface,
     private chooseRaceStep: ChooseRaceStepInterface
   ){}
 
   previous() {
-    this.sheetBuilderSteps.previous()
+    this.slider.previous()
     this.error = undefined
   }
 
-  confirmInitialAttributes(): void {
+  confirmStep(validateStep: () => void): void {
     try {
       this.error = undefined
-      if(this.attributesLauncher.getPoints() > 0) {
-        throw new Error('POINTS_LEFT')
-      }
-      this.sheetBuilderSteps.next()
+      validateStep();
+      this.slider.next()
     } catch(err){
-      this.handleError(err)
-    }
-  }
-
-  confirmRace(): void {
-    try {
-      this.error = undefined
-      this.chooseRaceStep.confirm()
-      this.sheetBuilderSteps.next()
-    } catch(err) {
       this.handleError(err)
     }
   }
@@ -54,8 +41,8 @@ export class SheetBuilderForm implements SheetBuilderFormInterface {
   getChooseRaceStep(): ChooseRaceStepInterface {
     return this.chooseRaceStep
   }
-  getSheetBuilderSteps(): SheetBuilderStepsInterface {
-    return this.sheetBuilderSteps
+  getSheetBuilderSteps(): SheetBuilderSliderInterface {
+    return this.slider
   }
 
   getError(): string | undefined {

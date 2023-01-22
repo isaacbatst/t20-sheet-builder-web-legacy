@@ -2,11 +2,11 @@ import { useState } from "react"
 import { ChooseRaceStepInterface } from "./ChooseRaceStep/ChooseRaceStep"
 import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase"
 import { SheetBuilderFormProjectionDecorator } from "./SheetBuilderFormProjectionDecorator"
-import { SheetBuilderStepsInterface } from "./SheetBuilderSteps"
+import { SheetBuilderSliderInterface } from "./SheetBuilderSlider"
 import { useSheetBuilderForm } from "./useSheetBuilderForm"
 
 export const useSheetBuilderFormProjection = (
-  sheetBuilderSteps: SheetBuilderStepsInterface,
+  sheetBuilderSteps: SheetBuilderSliderInterface,
   attributesLauncher: AttributesLauncherPerPurchaseInterface,
   chooseRaceStep: ChooseRaceStepInterface,
 ) => {

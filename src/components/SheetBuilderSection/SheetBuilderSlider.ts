@@ -3,7 +3,7 @@ import { SheetBuilderStepChooseRole } from "./SheetBuilderStepChooseRole"
 import { SheetBuilderStepInitialAttributesDefinition } from "./SheetBuilderStepInitialAttributesDefinition"
 import { SheetBuilderStepInterface } from "./SheetBuilderStepInterface"
 
-export type SheetBuilderStepsInterface = {
+export type SheetBuilderSliderInterface = {
   next(): void
   previous(): void
   shouldShowPrevious(): boolean
@@ -15,13 +15,25 @@ export type SheetBuilderStepsDTO = {
   current: number
 }
 
-export class SheetBuilderSteps implements SheetBuilderStepsInterface {
-  steps: SheetBuilderStepInterface[] = [
-    new SheetBuilderStepInitialAttributesDefinition(),
-    new SheetBuilderStepChooseRace(),
-    new SheetBuilderStepChooseRole()
-  ]
+export class SheetBuilderSlider implements SheetBuilderSliderInterface {
   current: number = 0
+  readonly steps: [
+    SheetBuilderStepInitialAttributesDefinition, 
+    SheetBuilderStepChooseRace, 
+    SheetBuilderStepChooseRole
+  ]
+
+  constructor(
+    sheetBuilderStepInitialAttributesDefinition: SheetBuilderStepInitialAttributesDefinition, 
+    sheetBuilderStepChooseRace: SheetBuilderStepChooseRace, 
+    sheetBuilderStepChooseRole: SheetBuilderStepChooseRole
+  ){
+    this.steps = [
+      sheetBuilderStepInitialAttributesDefinition,
+      sheetBuilderStepChooseRace,
+      sheetBuilderStepChooseRole
+    ]
+  }
 
   previous() {
     const previousIndex = this.current - 1;

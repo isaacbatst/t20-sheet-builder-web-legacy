@@ -1,9 +1,9 @@
 import { SheetBuilderStepInterface } from "./SheetBuilderStepInterface";
-import { SheetBuilderStepsDTO, SheetBuilderStepsInterface } from "./SheetBuilderSteps";
+import { SheetBuilderStepsDTO, SheetBuilderSliderInterface } from "./SheetBuilderSlider";
 
-export class SheetBuilderStepsDecorator implements SheetBuilderStepsInterface {
+export class SheetBuilderStepsDecorator implements SheetBuilderSliderInterface {
   constructor(
-    readonly sheetBuilderSteps: SheetBuilderStepsInterface
+    readonly sheetBuilderSteps: SheetBuilderSliderInterface
   ){}
   previous(): void {
     this.sheetBuilderSteps.previous()

@@ -1,9 +1,9 @@
-import { SheetBuilderStepsDTO, SheetBuilderStepsInterface } from "./SheetBuilderSteps";
+import { SheetBuilderStepsDTO, SheetBuilderSliderInterface } from "./SheetBuilderSlider";
 import { SheetBuilderStepsDecorator } from "./SheetBuilderStepsDecorator";
 
 export class SheetBuilderStepsProjectionDecorator extends SheetBuilderStepsDecorator {
   constructor(
-    sheetBuilderSteps: SheetBuilderStepsInterface,
+    sheetBuilderSteps: SheetBuilderSliderInterface,
     readonly setProjection: (projection: SheetBuilderStepsDTO) => void
   ){
     super(sheetBuilderSteps)

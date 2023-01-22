@@ -1,8 +1,11 @@
 import { Attribute, Attributes } from "t20-sheet-builder";
 
-export type AttributesLauncherPerPurchaseInterface = {
+export type AttributesLauncher = {
   getPoints(): number
   getAttributes(): Attributes
+}
+
+export type AttributesLauncherPerPurchaseInterface = AttributesLauncher & {
   sell(attribute: Attribute): void
   buy(attribute: Attribute): void
 }

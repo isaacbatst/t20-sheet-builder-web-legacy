@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { SheetBuilderStepsInterface } from "./SheetBuilderSteps"
+import { SheetBuilderSliderInterface } from "./SheetBuilderSlider"
 import { SheetBuilderStepsProjectionDecorator } from "./SheetBuilderStepsProjectionDecorator"
 
-export const useSheetBuilderStepsProjection = (sheetBuilderSteps: SheetBuilderStepsInterface) => {
+export const useSheetBuilderStepsProjection = (sheetBuilderSteps: SheetBuilderSliderInterface) => {
   const [projection, setProjection] = useState(sheetBuilderSteps.getDTO())
 
   return new SheetBuilderStepsProjectionDecorator(

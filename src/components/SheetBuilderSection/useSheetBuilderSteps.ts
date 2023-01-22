@@ -1,8 +1,8 @@
 import { useRef } from "react"
-import { SheetBuilderSteps } from "./SheetBuilderSteps"
+import { SheetBuilderSlider } from "./SheetBuilderSlider"
 
 export const useSheetBuilderSteps = () => {
-  const ref = useRef(new SheetBuilderSteps())
+  const ref = useRef(new SheetBuilderSlider())
 
   return ref.current
 }

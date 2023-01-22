@@ -2,10 +2,10 @@ import { useRef } from "react"
 import { AttributesLauncherPerPurchaseInterface } from "./InitialAttributesDefinitionStep/AttributesLauncherPerPurchase"
 import { ChooseRaceStepInterface } from "./ChooseRaceStep/ChooseRaceStep"
 import { SheetBuilderForm } from "./SheetBuilderForm"
-import { SheetBuilderStepsInterface } from "./SheetBuilderSteps"
+import { SheetBuilderSliderInterface } from "./SheetBuilderSlider"
 
 export const useSheetBuilderForm = (params: {
-  sheetBuilderSteps: SheetBuilderStepsInterface
+  sheetBuilderSteps: SheetBuilderSliderInterface
   attributesLauncher: AttributesLauncherPerPurchaseInterface,
   chooseRaceStep: ChooseRaceStepInterface
 }) => {
