@@ -20,13 +20,13 @@ export class AttributesLauncherPerPurchase implements AttributesLauncherPerPurch
     [4]: 7
   }
 
-  static get defaultAttributes() {
+  static get initialAttributes() {
     return {strength: 0 , dexterity: 0, constitution: 0,  intelligence: 0 , wisdom: 0, charisma: 0  }
   } 
 
   private points = 10;
 
-  constructor(private attributes: Attributes = AttributesLauncherPerPurchase.defaultAttributes){}
+  constructor(private attributes: Attributes = AttributesLauncherPerPurchase.initialAttributes){}
 
   buy(attribute: Attribute): void {   
     const currentAttribute = this.attributes[attribute]

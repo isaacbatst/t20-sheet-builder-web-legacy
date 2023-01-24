@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
-import { GeneralPowerFactory, GeneralPowerName, SkillName, Translator, VersatileChoicePower, VersatileChoiceSkill, VersatileChoiceType } from 't20-sheet-builder'
-import { Option } from '../../../../../../domain/entities/Option'
+import React, { useState } from 'react';
 import Select from 'react-select';
-import { HumanRaceStepVersatileErrors, HumanRaceStepVersatileInterface } from './HumanRaceStepVersatile';
-import Alert from '../../../../common/Alert';
+import { GeneralPowerFactory, GeneralPowerName, SkillName, Translator, VersatileChoicePower, VersatileChoiceSkill, VersatileChoiceType } from 't20-sheet-builder';
 import { CommonErrors } from '../../../../../../domain/entities/CommonErrors';
+import { Option } from '../../../../../../domain/entities/Option';
+import Alert from '../../../../common/Alert';
+import { HumanRaceStepVersatileErrors } from './HumanRaceStepVersatile';
+import { HumanRaceStepVersatileProjectionDecorator } from './HumanRaceStepVersatileProjectionDecorator';
 
 type Props = {
-  versatile: HumanRaceStepVersatileInterface
+  versatile: HumanRaceStepVersatileProjectionDecorator
 }
 
 const secondChoiceTypeOptions: Option<VersatileChoiceType>[] = [

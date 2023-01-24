@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect } from "vitest";
-import { useAttributesLauncherPerPurchaseProjection } from "../../../InitialAttributesDefinitionStep/useAttributesLauncherPerPurchaseProjection";
-import { useAttributesLauncherPerPurchaseRef } from "../../../InitialAttributesDefinitionStep/useAttributesLauncherPerPurchaseRef";
+import { AttributesLauncherPerPurchase } from "../../../InitialAttributesDefinitionStep/AttributesLauncherPerPurchase";
 import HumanRaceStepAttributesSelectorView from "./HumanRaceStepAttributesSelectorView";
 import { useHumanRaceStepAttributesSelectorProjection } from "./useHumanRaceStepAttributesSelectorProjection";
 import { useHumanRaceStepAttributesSelectorRef } from "./useHumanRaceStepAttributesSelectorRef";
@@ -10,10 +9,11 @@ import { useHumanRaceStepAttributesSelectorRef } from "./useHumanRaceStepAttribu
 const renderHumanRaceStepAttributesSelectorView = () => {
   const HumanRaceStepAttributesSelectorViewWrapperFake = () => {
     const selectorRef = useHumanRaceStepAttributesSelectorRef();
-    const attributesLauncherRef = useAttributesLauncherPerPurchaseRef();
     const selector = useHumanRaceStepAttributesSelectorProjection(selectorRef);
-    const attributesLauncher = useAttributesLauncherPerPurchaseProjection(attributesLauncherRef)
-    return <HumanRaceStepAttributesSelectorView selector={selector} attributesLauncher={attributesLauncher} />
+    return <HumanRaceStepAttributesSelectorView 
+      selector={selector} 
+      initialAttributes={AttributesLauncherPerPurchase.initialAttributes} 
+    />
   }
 
   return render(<HumanRaceStepAttributesSelectorViewWrapperFake />)

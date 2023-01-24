@@ -1,16 +1,14 @@
 import React from 'react';
-import { Attribute, Translator } from 't20-sheet-builder';
+import { Attribute, Attributes, Translator } from 't20-sheet-builder';
 import Checkbox from '../../../../common/Checkbox/Checkbox';
-import { AttributesLauncherPerPurchaseInterface } from '../../../InitialAttributesDefinitionStep/AttributesLauncherPerPurchase';
-import { HumanRaceStepAttributesSelectorInterface } from './HumanRaceStepAttributesSelector';
+import { HumanRaceStepAttributesSelectorProjectionDecorator } from './HumanRaceStepAttributesSelectorProjectionDecorator';
 
 type Props = {
-  selector: HumanRaceStepAttributesSelectorInterface,
-  attributesLauncher: AttributesLauncherPerPurchaseInterface
+  selector: HumanRaceStepAttributesSelectorProjectionDecorator,
+  initialAttributes: Attributes
 }
 
-const HumanRaceStepAttributesSelectorView: React.FC<Props> = ({selector, attributesLauncher}) => {
-  const initialAttributes = attributesLauncher.getAttributes()
+const HumanRaceStepAttributesSelectorView: React.FC<Props> = ({selector, initialAttributes}) => {
   const selectorAttributes = selector.getAttributes()
   return (
     <div>

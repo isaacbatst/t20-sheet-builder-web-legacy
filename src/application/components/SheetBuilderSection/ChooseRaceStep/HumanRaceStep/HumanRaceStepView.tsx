@@ -1,16 +1,20 @@
+import { Attributes } from 't20-sheet-builder';
+import { HumanRaceStepAttributesSelectorProjectionDecorator } from './HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelectorProjectionDecorator';
 import HumanRaceStepAttributesSelectorView from './HumanRaceStepAttributesSelector/HumanRaceStepAttributesSelectorView';
-import { HumanRaceStepProjectionDecorator } from './HumanRaceStepDecoratorProjection';
+import { HumanRaceStepVersatileProjectionDecorator } from './HumanRaceStepVersatile/HumanRaceStepVersatileProjectionDecorator';
 import HumanRaceStepVersatileView from './HumanRaceStepVersatile/HumanRaceStepVersatileView';
 
 type Props = {
-  humanRaceStep: HumanRaceStepProjectionDecorator
+  selector: HumanRaceStepAttributesSelectorProjectionDecorator,
+  versatile: HumanRaceStepVersatileProjectionDecorator
+  initialAttributes: Attributes
 }
 
-const HumanRaceStepView: React.FC<Props> = ({ humanRaceStep }) => {
+const HumanRaceStepView: React.FC<Props> = ({ selector, versatile, initialAttributes }) => {
   return (
     <div>
-      <HumanRaceStepAttributesSelectorView selector={humanRaceStep.getSelector()}/>
-      <HumanRaceStepVersatileView versatile={humanRaceStep.getVersatile()} />
+      <HumanRaceStepAttributesSelectorView initialAttributes={initialAttributes} selector={selector}/>
+      <HumanRaceStepVersatileView versatile={versatile} />
     </div>
   )
 }
